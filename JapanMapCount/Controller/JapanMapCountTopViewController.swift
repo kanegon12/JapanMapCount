@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class JapanMapCountTopViewController: UIViewController {
 
     @IBOutlet weak var mapView: UIView!
     
