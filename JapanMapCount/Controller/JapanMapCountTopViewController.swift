@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  JapanMapCountTopViewController.swift
 //  JapanMapCount
 //
 //  Created by Newbie on 2025/12/27.
