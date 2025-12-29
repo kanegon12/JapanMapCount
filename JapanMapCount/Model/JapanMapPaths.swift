@@ -8,13 +8,13 @@
 import UIKit
 
 enum Prefecture: Int, CaseIterable {
-    case hokkaido = 0
-    case aomori = 1
-    case iwate = 2
-    case miyagi = 3
-    case akita = 4
-    case yamagata = 5
-    case fukushima = 6
+    case hokkaido = 1
+    case aomori = 2
+    case iwate = 3
+    case miyagi = 4
+    case akita = 5
+    case yamagata = 6
+    case fukushima = 7
 
 }
 
