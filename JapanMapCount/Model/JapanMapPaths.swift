@@ -8,7 +8,7 @@
 import UIKit
 
 enum Prefecture: Int, CaseIterable {
-    case hokkaido = 0
+    case hokkaido = 1
 }
 
 enum JapanMapPaths {
