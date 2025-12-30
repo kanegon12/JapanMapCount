@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  JapanMapCountTopViewController.swift
 //  JapanMapCount
 //
 //  Created by Newbie on 2025/12/27.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class JapanMapCountTopViewController: UIViewController {
     
     @IBOutlet weak var mapView: UIView!
     
