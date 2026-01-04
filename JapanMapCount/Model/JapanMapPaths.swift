@@ -47,6 +47,14 @@ enum Prefecture: Int, CaseIterable {
     case kagawa = 37
     case ehime = 38
     case kochi = 39
+    case fukuoka = 40
+    case saga = 41
+    case nagasaki = 42
+    case kumamoto = 43
+    case oita = 44
+    case miyazaki = 45
+    case kagoshima = 46
+    case okinawa = 47
 }
 
 enum JapanMapPaths {
@@ -131,6 +139,22 @@ enum JapanMapPaths {
             return makeEhimePath()
         case .kochi:
             return makeKochiPath()
+        case .fukuoka:
+            return makeFukuokaPath()
+        case .saga:
+            return makeSagaPath()
+        case .nagasaki:
+            return makeNagasakiPath()
+        case .kumamoto:
+            return makeKumamotoPath()
+        case .oita:
+            return makeOitaPath()
+        case .miyazaki:
+            return makeMiyazakiPath()
+        case .kagoshima:
+            return makeKagoshimaPath()
+        case .okinawa:
+            return makeOkinawaPath()
         }
     }
 }
@@ -1509,6 +1533,245 @@ func makeKochiPath() -> UIBezierPath {
     path.addLine(to: CGPoint(x: 276.95, y: 1560.29))
     path.addLine(to: CGPoint(x: 276.47, y: 1562.06))
     path.addLine(to: CGPoint(x: 276.5, y: 1564.05))
+    path.close()
+    return path
+}
+
+func makeFukuokaPath() -> UIBezierPath {
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: 134.25, y: 1160.24))
+    path.addLine(to: CGPoint(x: 134.25, y: 1307.74))
+    path.addLine(to: CGPoint(x: 134.88, y: 1309.74))
+    path.addLine(to: CGPoint(x: 135.75, y: 1311.49))
+    path.addLine(to: CGPoint(x: 137.12, y: 1312.99))
+    path.addLine(to: CGPoint(x: 139, y: 1314.49))
+    path.addLine(to: CGPoint(x: 185.5, y: 1314.49))
+    path.addLine(to: CGPoint(x: 187.75, y: 1313.49))
+    path.addLine(to: CGPoint(x: 189.25, y: 1311.74))
+    path.addLine(to: CGPoint(x: 190.12, y: 1309.99))
+    path.addLine(to: CGPoint(x: 190.84, y: 1307.24))
+    path.addLine(to: CGPoint(x: 190.75, y: 1159.52))
+    path.addLine(to: CGPoint(x: 190.55, y: 1158.01))
+    path.addLine(to: CGPoint(x: 190.02, y: 1156.53))
+    path.addLine(to: CGPoint(x: 189.27, y: 1155.34))
+    path.addLine(to: CGPoint(x: 188.21, y: 1154.3))
+    path.addLine(to: CGPoint(x: 186.84, y: 1153.59))
+    path.addLine(to: CGPoint(x: 184.76, y: 1153.02))
+    path.addLine(to: CGPoint(x: 138.69, y: 1152.8))
+    path.addLine(to: CGPoint(x: 137.19, y: 1153.05))
+    path.addLine(to: CGPoint(x: 135.94, y: 1153.61))
+    path.addLine(to: CGPoint(x: 135.25, y: 1154.3))
+    path.addLine(to: CGPoint(x: 134.62, y: 1155.24))
+    path.addLine(to: CGPoint(x: 134.25, y: 1156.8))
+    path.addLine(to: CGPoint(x: 134.25, y: 1160.24))
+    path.close()
+    return path
+}
+
+func makeSagaPath() -> UIBezierPath {
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: 77.5, y: 1160.49))
+    path.addLine(to: CGPoint(x: 77.38, y: 1307.61))
+    path.addLine(to: CGPoint(x: 78.25, y: 1310.74))
+    path.addLine(to: CGPoint(x: 80.25, y: 1313.24))
+    path.addLine(to: CGPoint(x: 82.62, y: 1314.86))
+    path.addLine(to: CGPoint(x: 127.75, y: 1315.24))
+    path.addLine(to: CGPoint(x: 130.38, y: 1313.99))
+    path.addLine(to: CGPoint(x: 132.25, y: 1312.11))
+    path.addLine(to: CGPoint(x: 133.38, y: 1309.61))
+    path.addLine(to: CGPoint(x: 134, y: 1307.36))
+    path.addLine(to: CGPoint(x: 134, y: 1157.61))
+    path.addLine(to: CGPoint(x: 133.53, y: 1155.96))
+    path.addLine(to: CGPoint(x: 132.69, y: 1154.68))
+    path.addLine(to: CGPoint(x: 131.75, y: 1153.71))
+    path.addLine(to: CGPoint(x: 129.81, y: 1152.9))
+    path.addLine(to: CGPoint(x: 82.06, y: 1152.58))
+    path.addLine(to: CGPoint(x: 80.73, y: 1152.95))
+    path.addLine(to: CGPoint(x: 79.67, y: 1153.57))
+    path.addLine(to: CGPoint(x: 78.7, y: 1154.46))
+    path.addLine(to: CGPoint(x: 77.9, y: 1155.56))
+    path.addLine(to: CGPoint(x: 77.55, y: 1156.67))
+    path.addLine(to: CGPoint(x: 77.5, y: 1160.49))
+    path.close()
+    return path
+}
+
+func makeNagasakiPath() -> UIBezierPath {
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: 19.75, y: 1159.61))
+    path.addLine(to: CGPoint(x: 19.88, y: 1308.11))
+    path.addLine(to: CGPoint(x: 20.5, y: 1310.74))
+    path.addLine(to: CGPoint(x: 22, y: 1313.11))
+    path.addLine(to: CGPoint(x: 24, y: 1314.86))
+    path.addLine(to: CGPoint(x: 27, y: 1315.61))
+    path.addLine(to: CGPoint(x: 70.88, y: 1315.61))
+    path.addLine(to: CGPoint(x: 73, y: 1314.74))
+    path.addLine(to: CGPoint(x: 74.88, y: 1312.99))
+    path.addLine(to: CGPoint(x: 76.25, y: 1310.74))
+    path.addLine(to: CGPoint(x: 77.03, y: 1307.83))
+    path.addLine(to: CGPoint(x: 77.03, y: 1159.23))
+    path.addLine(to: CGPoint(x: 76.53, y: 1156.98))
+    path.addLine(to: CGPoint(x: 75.52, y: 1155.16))
+    path.addLine(to: CGPoint(x: 74.19, y: 1153.75))
+    path.addLine(to: CGPoint(x: 72.25, y: 1152.69))
+    path.addLine(to: CGPoint(x: 24.56, y: 1152.74))
+    path.addLine(to: CGPoint(x: 22.88, y: 1152.99))
+    path.addLine(to: CGPoint(x: 21.81, y: 1153.8))
+    path.addLine(to: CGPoint(x: 20.94, y: 1154.86))
+    path.addLine(to: CGPoint(x: 20.13, y: 1156.24))
+    path.addLine(to: CGPoint(x: 19.75, y: 1157.86))
+    path.addLine(to: CGPoint(x: 19.75, y: 1159.61))
+    path.close()
+    return path
+}
+
+func makeKumamotoPath() -> UIBezierPath {
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: 134.25, y: 1320.55))
+    path.addLine(to: CGPoint(x: 134.12, y: 1470.24))
+    path.addLine(to: CGPoint(x: 134.44, y: 1471.86))
+    path.addLine(to: CGPoint(x: 135.31, y: 1473.24))
+    path.addLine(to: CGPoint(x: 136.81, y: 1474.55))
+    path.addLine(to: CGPoint(x: 138.38, y: 1475.24))
+    path.addLine(to: CGPoint(x: 140, y: 1475.68))
+    path.addLine(to: CGPoint(x: 185.62, y: 1475.55))
+    path.addLine(to: CGPoint(x: 188.06, y: 1474.93))
+    path.addLine(to: CGPoint(x: 189.56, y: 1473.74))
+    path.addLine(to: CGPoint(x: 190.31, y: 1472.49))
+    path.addLine(to: CGPoint(x: 190.81, y: 1470.24))
+    path.addLine(to: CGPoint(x: 190.81, y: 1319.55))
+    path.addLine(to: CGPoint(x: 190.5, y: 1317.43))
+    path.addLine(to: CGPoint(x: 189.69, y: 1315.93))
+    path.addLine(to: CGPoint(x: 188.38, y: 1314.99))
+    path.addLine(to: CGPoint(x: 186.25, y: 1314.61))
+    path.addLine(to: CGPoint(x: 138.81, y: 1314.68))
+    path.addLine(to: CGPoint(x: 137, y: 1314.99))
+    path.addLine(to: CGPoint(x: 135.88, y: 1315.61))
+    path.addLine(to: CGPoint(x: 134.88, y: 1316.61))
+    path.addLine(to: CGPoint(x: 134.44, y: 1317.8))
+    path.addLine(to: CGPoint(x: 134.25, y: 1320.55))
+    path.close()
+    return path
+}
+
+func makeOitaPath() -> UIBezierPath {
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: 191.04, y: 1161.53))
+    path.addLine(to: CGPoint(x: 191.04, y: 1307.19))
+    path.addLine(to: CGPoint(x: 191.38, y: 1309.86))
+    path.addLine(to: CGPoint(x: 192.12, y: 1311.49))
+    path.addLine(to: CGPoint(x: 193.12, y: 1313.11))
+    path.addLine(to: CGPoint(x: 194.5, y: 1314.36))
+    path.addLine(to: CGPoint(x: 196.12, y: 1314.74))
+    path.addLine(to: CGPoint(x: 241.75, y: 1314.49))
+    path.addLine(to: CGPoint(x: 244.12, y: 1314.11))
+    path.addLine(to: CGPoint(x: 246.12, y: 1313.24))
+    path.addLine(to: CGPoint(x: 247.38, y: 1312.11))
+    path.addLine(to: CGPoint(x: 248.38, y: 1310.49))
+    path.addLine(to: CGPoint(x: 248.75, y: 1308.49))
+    path.addLine(to: CGPoint(x: 248.38, y: 1160.61))
+    path.addLine(to: CGPoint(x: 247.88, y: 1158.11))
+    path.addLine(to: CGPoint(x: 246.75, y: 1156.11))
+    path.addLine(to: CGPoint(x: 245, y: 1154.24))
+    path.addLine(to: CGPoint(x: 243.12, y: 1153.11))
+    path.addLine(to: CGPoint(x: 240.88, y: 1152.49))
+    path.addLine(to: CGPoint(x: 197, y: 1152.36))
+    path.addLine(to: CGPoint(x: 195, y: 1152.86))
+    path.addLine(to: CGPoint(x: 193.5, y: 1153.86))
+    path.addLine(to: CGPoint(x: 192.38, y: 1154.86))
+    path.addLine(to: CGPoint(x: 191.62, y: 1156.24))
+    path.addLine(to: CGPoint(x: 191.25, y: 1157.74))
+    path.addLine(to: CGPoint(x: 190.88, y: 1159.49))
+    path.addLine(to: CGPoint(x: 191.04, y: 1161.53))
+    path.close()
+    return path
+}
+
+func makeMiyazakiPath() -> UIBezierPath {
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: 191.04, y: 1321.33))
+    path.addLine(to: CGPoint(x: 191.04, y: 1468.94))
+    path.addLine(to: CGPoint(x: 191.39, y: 1471.42))
+    path.addLine(to: CGPoint(x: 192.1, y: 1473.01))
+    path.addLine(to: CGPoint(x: 193.52, y: 1474.42))
+    path.addLine(to: CGPoint(x: 195.64, y: 1475.31))
+    path.addLine(to: CGPoint(x: 241.78, y: 1475.13))
+    path.addLine(to: CGPoint(x: 244.43, y: 1474.42))
+    path.addLine(to: CGPoint(x: 246.72, y: 1472.83))
+    path.addLine(to: CGPoint(x: 248.32, y: 1470.71))
+    path.addLine(to: CGPoint(x: 249.2, y: 1468.41))
+    path.addLine(to: CGPoint(x: 248.49, y: 1321.16))
+    path.addLine(to: CGPoint(x: 247.96, y: 1318.15))
+    path.addLine(to: CGPoint(x: 246.55, y: 1316.03))
+    path.addLine(to: CGPoint(x: 244.6, y: 1314.79))
+    path.addLine(to: CGPoint(x: 242.59, y: 1314.63))
+    path.addLine(to: CGPoint(x: 195.99, y: 1314.93))
+    path.addLine(to: CGPoint(x: 194.4, y: 1315.23))
+    path.addLine(to: CGPoint(x: 193.29, y: 1315.99))
+    path.addLine(to: CGPoint(x: 192.28, y: 1317))
+    path.addLine(to: CGPoint(x: 191.53, y: 1318.15))
+    path.addLine(to: CGPoint(x: 191.08, y: 1319.39))
+    path.addLine(to: CGPoint(x: 191.04, y: 1321.33))
+    path.close()
+    return path
+}
+
+func makeKagoshimaPath() -> UIBezierPath {
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: 134.21, y: 1485.47))
+    path.addLine(to: CGPoint(x: 133.85, y: 1572.18))
+    path.addLine(to: CGPoint(x: 134.29, y: 1576.42))
+    path.addLine(to: CGPoint(x: 135.44, y: 1579.87))
+    path.addLine(to: CGPoint(x: 137.21, y: 1582.52))
+    path.addLine(to: CGPoint(x: 140.04, y: 1583.76))
+    path.addLine(to: CGPoint(x: 240.12, y: 1583.86))
+    path.addLine(to: CGPoint(x: 243.12, y: 1583.11))
+    path.addLine(to: CGPoint(x: 245.31, y: 1581.36))
+    path.addLine(to: CGPoint(x: 247.06, y: 1579.05))
+    path.addLine(to: CGPoint(x: 248.25, y: 1576.18))
+    path.addLine(to: CGPoint(x: 248.81, y: 1573.18))
+    path.addLine(to: CGPoint(x: 248.5, y: 1482.49))
+    path.addLine(to: CGPoint(x: 247.88, y: 1480.15))
+    path.addLine(to: CGPoint(x: 246.56, y: 1478.24))
+    path.addLine(to: CGPoint(x: 244.59, y: 1476.52))
+    path.addLine(to: CGPoint(x: 242.41, y: 1475.61))
+    path.addLine(to: CGPoint(x: 240.81, y: 1475.27))
+    path.addLine(to: CGPoint(x: 140.72, y: 1475.96))
+    path.addLine(to: CGPoint(x: 138.22, y: 1476.4))
+    path.addLine(to: CGPoint(x: 136.84, y: 1477.27))
+    path.addLine(to: CGPoint(x: 135.69, y: 1478.55))
+    path.addLine(to: CGPoint(x: 134.88, y: 1480.05))
+    path.addLine(to: CGPoint(x: 134.38, y: 1481.77))
+    path.addLine(to: CGPoint(x: 134.22, y: 1483.43))
+    path.addLine(to: CGPoint(x: 134.21, y: 1485.47))
+    path.close()
+    return path
+}
+
+func makeOkinawaPath() -> UIBezierPath {
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: 154.27, y: 743.27))
+    path.addLine(to: CGPoint(x: 153.92, y: 829.89))
+    path.addLine(to: CGPoint(x: 154.8, y: 834.31))
+    path.addLine(to: CGPoint(x: 157.1, y: 837.32))
+    path.addLine(to: CGPoint(x: 160.1, y: 839.79))
+    path.addLine(to: CGPoint(x: 163.64, y: 840.85))
+    path.addLine(to: CGPoint(x: 260.69, y: 840.5))
+    path.addLine(to: CGPoint(x: 264.76, y: 838.2))
+    path.addLine(to: CGPoint(x: 267.58, y: 834.84))
+    path.addLine(to: CGPoint(x: 269, y: 830.95))
+    path.addLine(to: CGPoint(x: 269, y: 741.68))
+    path.addLine(to: CGPoint(x: 268.11, y: 736.73))
+    path.addLine(to: CGPoint(x: 266.7, y: 733.55))
+    path.addLine(to: CGPoint(x: 264.23, y: 731.08))
+    path.addLine(to: CGPoint(x: 260.87, y: 729.84))
+    path.addLine(to: CGPoint(x: 161.16, y: 730.72))
+    path.addLine(to: CGPoint(x: 158.69, y: 731.61))
+    path.addLine(to: CGPoint(x: 157.31, y: 732.8))
+    path.addLine(to: CGPoint(x: 156, y: 734.43))
+    path.addLine(to: CGPoint(x: 155.13, y: 736.18))
+    path.addLine(to: CGPoint(x: 154.44, y: 738.74))
+    path.addLine(to: CGPoint(x: 154.27, y: 743.27))
     path.close()
     return path
 }
