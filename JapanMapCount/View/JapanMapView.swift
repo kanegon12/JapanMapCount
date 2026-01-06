@@ -9,9 +9,45 @@ import UIKit
 
 @IBDesignable final class JapanMapView: UIView {
     
+    private var prefecturePaths: [Prefecture: CGPath] = [:]
+    
+    /// コード生成初期化
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    /// Storyboard生成初期化
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    private func commonInit() {
+        // タップを受けられる様に
+        isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        addGestureRecognizer(tap)
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         drawMap()
+    }
+    
+    @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
+        // タップされた座標
+        let point = gesture.location(in: self)
+        // 座標が都道府県の中か判定
+        for prefecture in Prefecture.allCases {
+            guard let cgPath = prefecturePaths[prefecture] else { continue }
+            // Pathの中にpointの座標が入っているか
+            if cgPath.contains(point, using: .winding, transform: .identity) {
+                print("\(prefecture)がタップされました")
+                return
+            }
+            
+        }
+        print("県外をタップしています")
     }
     
     /// 地図全体の外枠を求める
@@ -74,6 +110,9 @@ import UIKit
             shapeLayer.lineWidth = 1.5
             // レイヤーに貼る
             layer.addSublayer(shapeLayer)
+            
+            // 変換済みパスの保存
+            prefecturePaths[prefecture] = path.cgPath
         }
         
     }
