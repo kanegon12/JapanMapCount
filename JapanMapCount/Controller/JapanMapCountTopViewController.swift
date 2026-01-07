@@ -7,15 +7,33 @@
 
 import UIKit
 
-class JapanMapCountTopViewController: UIViewController {
+final class JapanMapCountTopViewController: UIViewController {
     
-    @IBOutlet weak var mapView: UIView!
+    @IBOutlet weak var mapView: JapanMapView!
+    
+    private var selectedPrefecture: Prefecture?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        mapView.delegate = self
     }
     
+    /// 画面遷移が起こる前に自動的に呼ばれるメソッド
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // identifierのIDが"ShowPrefectureDetail"か確認
+        if segue.identifier == "ShowPrefectureDetail",
+           let detailViewController = segue.destination as? JapanMapCountListDetailViewController {
+            // 選ばれた都道府県のデータを遷移先に渡す
+            detailViewController.prefecture = selectedPrefecture
+        }
+    }
+}
+
+extension JapanMapCountTopViewController: JapanmapViewDelegate {
+    func japanMapView(_ mapView: JapanMapView, didTap prefecture: Prefecture) {
+        // 画面遷移
+        selectedPrefecture = prefecture
+        performSegue(withIdentifier: "ShowPrefectureDetail", sender: self)
+    }
 }

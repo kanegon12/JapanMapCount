@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EXs-Sb-C95">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REs-Cp-IaA" customClass="JapanMapView" customModule="JapanMapCount" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <rect key="frame" x="0.0" y="172" width="393" height="612"/>
                                 <color key="backgroundColor" systemColor="systemCyanColor"/>
                             </view>
                         </subviews>
@@ -30,15 +30,85 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="REs-Cp-IaA" secondAttribute="bottom" id="rDl-kd-sVw"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hue-m0-izJ">
+                        <barButtonItem key="backBarButtonItem" title="戻る" id="HH2-VK-uL1"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="REs-Cp-IaA" id="rhF-t9-leD"/>
+                        <segue destination="tc1-yu-K84" kind="show" identifier="ShowPrefectureDetail" id="o6g-KB-NTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="161" y="8"/>
+            <point key="canvasLocation" x="1086.2595419847328" y="7.746478873239437"/>
+        </scene>
+        <!--Japan Map Count List Detail View Controller-->
+        <scene sceneID="j5t-xy-sNT">
+            <objects>
+                <viewController id="tc1-yu-K84" customClass="JapanMapCountListDetailViewController" customModule="JapanMapCount" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aHY-sx-F9w">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xtz-lw-ODf">
+                                <rect key="frame" x="0.0" y="172" width="393" height="612"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6ww-Js-6CD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6ww-Js-6CD" firstAttribute="bottom" secondItem="xtz-lw-ODf" secondAttribute="bottom" id="BYu-tf-Yrt"/>
+                            <constraint firstItem="xtz-lw-ODf" firstAttribute="top" secondItem="6ww-Js-6CD" secondAttribute="top" id="BgU-GV-Jts"/>
+                            <constraint firstItem="xtz-lw-ODf" firstAttribute="leading" secondItem="6ww-Js-6CD" secondAttribute="leading" id="NUG-6p-JnR"/>
+                            <constraint firstItem="6ww-Js-6CD" firstAttribute="trailing" secondItem="xtz-lw-ODf" secondAttribute="trailing" id="ShU-UJ-wIq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bRt-lD-oph">
+                        <barButtonItem key="rightBarButtonItem" title="新規登録" id="zQr-DR-kKt">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="listDetailView" destination="xtz-lw-ODf" id="yv8-Ss-IvY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tJf-0e-Yez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1976" y="8"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6C2-gM-uYN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EXs-Sb-C95" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZwP-Pf-Py1">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="mXG-Vb-Y9O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HoX-zf-EhF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="159.54198473282443" y="7.746478873239437"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
