@@ -193,7 +193,7 @@ enum JapanMapPaths {
         case .toyama:
             return makeToyamaPath()
         case .ishikawa:
-            return makeIshikawa()
+            return makeIshikawaPath()
         case .fukui:
             return makeFukuiPath()
         case .yamanashi:
@@ -827,7 +827,7 @@ func makeToyamaPath() -> UIBezierPath {
     return path
 }
 
-func makeIshikawa() -> UIBezierPath {
+func makeIshikawaPath() -> UIBezierPath {
     let path = UIBezierPath()
     path.move(to: CGPoint(x: 617.51, y: 974.17))
     path.addLine(to: CGPoint(x: 617.51, y: 1145.73))

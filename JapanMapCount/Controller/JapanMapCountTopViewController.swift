@@ -23,14 +23,15 @@ final class JapanMapCountTopViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // identifierのIDが"ShowPrefectureDetail"か確認
         if segue.identifier == "ShowPrefectureDetail",
-           let detailViewController = segue.destination as? JapanMapCountListDetailViewController {
+           let detailViewController = segue.destination as? JapanMapCountListDetailViewController,
+           let prefectureToPass = selectedPrefecture {
             // 選ばれた都道府県のデータを遷移先に渡す
-            detailViewController.prefecture = selectedPrefecture
+            detailViewController.setPrefecture(prefecture: prefectureToPass)
         }
     }
 }
 
-extension JapanMapCountTopViewController: JapanmapViewDelegate {
+extension JapanMapCountTopViewController: JapanMapViewDelegate {
     func japanMapView(_ mapView: JapanMapView, didTap prefecture: Prefecture) {
         // 画面遷移
         selectedPrefecture = prefecture

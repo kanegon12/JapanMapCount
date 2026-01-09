@@ -10,7 +10,12 @@ import UIKit
 final class JapanMapCountListDetailViewController: UIViewController {
     @IBOutlet weak var listDetailView: UITableView!
     
-    var prefecture: Prefecture?
+    private var prefecture: Prefecture?
+    
+    // prefectureを外部から呼ぶため
+    func setPrefecture(prefecture: Prefecture) {
+        self.prefecture = prefecture
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
