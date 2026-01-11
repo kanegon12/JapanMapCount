@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol JapanMapViewDelegate: AnyObject {
+    func japanMapView(_ mapView: JapanMapView, didTap prefecture: Prefecture)
+}
+
 @IBDesignable final class JapanMapView: UIView {
     
-    weak var delegate: JapanmapViewDelegate?
+    weak var delegate: JapanMapViewDelegate?
     
     private var prefecturePaths: [Prefecture: CGPath] = [:]
     
