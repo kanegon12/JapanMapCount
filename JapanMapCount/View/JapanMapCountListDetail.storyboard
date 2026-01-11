@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="547-PZ-vim">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Japan Map Count List Detail View Controller-->
+        <scene sceneID="Sb3-ug-F4u">
+            <objects>
+                <viewController storyboardIdentifier="JapanMapCountListDetail" id="XcP-65-ZKh" customClass="JapanMapCountListDetailViewController" customModule="JapanMapCount" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nEF-0c-Idv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rDH-kY-yf0">
+                                <rect key="frame" x="0.0" y="172" width="393" height="612"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzE-AK-kdh">
+                                <rect key="frame" x="338" y="729" width="40" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="VbI-u1-Yfh"/>
+                                    <constraint firstAttribute="width" constant="40" id="pp1-OU-4kd"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="didTapSortOrderButton:" destination="XcP-65-ZKh" eventType="touchUpInside" id="QdU-dw-2W2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ar5-7G-500"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ar5-7G-500" firstAttribute="trailing" secondItem="rDH-kY-yf0" secondAttribute="trailing" id="04F-yf-kdp"/>
+                            <constraint firstItem="rDH-kY-yf0" firstAttribute="top" secondItem="Ar5-7G-500" secondAttribute="top" id="2Wi-jJ-qhF"/>
+                            <constraint firstItem="Ar5-7G-500" firstAttribute="trailing" secondItem="nzE-AK-kdh" secondAttribute="trailing" constant="15" id="Cdf-LJ-mye"/>
+                            <constraint firstItem="rDH-kY-yf0" firstAttribute="leading" secondItem="Ar5-7G-500" secondAttribute="leading" id="Ghi-Ac-0lK"/>
+                            <constraint firstItem="Ar5-7G-500" firstAttribute="bottom" secondItem="nzE-AK-kdh" secondAttribute="bottom" constant="15" id="Th6-yu-j4B"/>
+                            <constraint firstItem="Ar5-7G-500" firstAttribute="bottom" secondItem="rDH-kY-yf0" secondAttribute="bottom" id="oZo-dA-eDQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bGK-34-aAF">
+                        <barButtonItem key="rightBarButtonItem" title="新規登録" id="JID-8j-uIH">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="listDetailView" destination="rDH-kY-yf0" id="YgG-A4-jyX"/>
+                        <outlet property="sortOrderButton" destination="nzE-AK-kdh" id="0vH-Ad-nDX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MA1-Rn-6Eg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1006.8702290076335" y="-752.11267605633805"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="f8y-aI-7rF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="547-PZ-vim" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JYK-dG-shU">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XcP-65-ZKh" kind="relationship" relationship="rootViewController" id="jY6-er-OZg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nrc-b5-8Bc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137" y="-752"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

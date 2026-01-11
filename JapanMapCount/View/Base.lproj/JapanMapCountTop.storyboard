@@ -35,67 +35,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="REs-Cp-IaA" id="rhF-t9-leD"/>
-                        <segue destination="tc1-yu-K84" kind="show" identifier="ShowPrefectureDetail" id="o6g-KB-NTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1086.2595419847328" y="7.746478873239437"/>
-        </scene>
-        <!--Japan Map Count List Detail View Controller-->
-        <scene sceneID="j5t-xy-sNT">
-            <objects>
-                <viewController id="tc1-yu-K84" customClass="JapanMapCountListDetailViewController" customModule="JapanMapCount" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aHY-sx-F9w">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xtz-lw-ODf">
-                                <rect key="frame" x="0.0" y="172" width="393" height="612"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvI-Cu-6rR">
-                                <rect key="frame" x="343" y="734" width="35" height="35"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.up.arrow.down" catalog="system" cornerStyle="capsule">
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="18"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="sortOrderButton:" destination="tc1-yu-K84" eventType="touchUpInside" id="Kdi-Sa-vYp"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6ww-Js-6CD"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="6ww-Js-6CD" firstAttribute="trailing" secondItem="jvI-Cu-6rR" secondAttribute="trailing" constant="15" id="0uk-Io-PUQ"/>
-                            <constraint firstItem="6ww-Js-6CD" firstAttribute="bottom" secondItem="xtz-lw-ODf" secondAttribute="bottom" id="BYu-tf-Yrt"/>
-                            <constraint firstItem="xtz-lw-ODf" firstAttribute="top" secondItem="6ww-Js-6CD" secondAttribute="top" id="BgU-GV-Jts"/>
-                            <constraint firstItem="xtz-lw-ODf" firstAttribute="leading" secondItem="6ww-Js-6CD" secondAttribute="leading" id="NUG-6p-JnR"/>
-                            <constraint firstItem="6ww-Js-6CD" firstAttribute="trailing" secondItem="xtz-lw-ODf" secondAttribute="trailing" id="ShU-UJ-wIq"/>
-                            <constraint firstItem="6ww-Js-6CD" firstAttribute="bottom" secondItem="jvI-Cu-6rR" secondAttribute="bottom" constant="15" id="oeh-p9-EhW"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="bRt-lD-oph">
-                        <barButtonItem key="rightBarButtonItem" title="新規登録" id="zQr-DR-kKt">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="listDetailView" destination="xtz-lw-ODf" id="yv8-Ss-IvY"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tJf-0e-Yez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1976" y="8"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6C2-gM-uYN">
@@ -130,12 +74,8 @@
     </scenes>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
-        <image name="arrow.up.arrow.down" catalog="system" width="128" height="99"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemCyanColor">
             <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
