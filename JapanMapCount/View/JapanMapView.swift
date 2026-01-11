@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol JapanMapViewDelegate: AnyObject {
+    func japanMapView(_ mapView: JapanMapView, didTap prefecture: Prefecture)
+}
+
 @IBDesignable final class JapanMapView: UIView {
+    
+    weak var delegate: JapanMapViewDelegate?
     
     private var prefecturePaths: [Prefecture: CGPath] = [:]
     
@@ -43,6 +49,9 @@ import UIKit
             // Pathの中にpointの座標が入っているか
             if cgPath.contains(point, using: .winding, transform: .identity) {
                 print("\(prefecture)がタップされました")
+                
+                // タップを通知
+                delegate?.japanMapView(self, didTap: prefecture)
                 return
             }
             
