@@ -28,7 +28,6 @@ final class JapanMapCountListDetailViewController: UIViewController {
     
     private func configureSortOrderButton() {
         // アイコン
-        sortOrderButton.setTitle(nil, for: .normal)
         sortOrderButton.setImage(UIImage(systemName: "arrow.up.arrow.down"), for: .normal)
         // 色
         sortOrderButton.backgroundColor = .systemBlue
