@@ -21,20 +21,23 @@ final class JapanMapCountListDetailViewController: UIViewController {
         // タイトルに県名表示
         title = prefecture?.displayName
         
-        // デモデータ
-        let demoData1 = RecordModel()
-        demoData1.recordDate = Date()
-        demoData1.recordText = "これはテスト1です。"
-        let demoData2 = RecordModel()
-        demoData2.recordDate = Date()
-        demoData2.recordText = "これはテスト2です。改行確認です。"
-        let demoData3 = RecordModel()
-        demoData3.recordDate = Date()
-        demoData3.recordText = "これはテスト3です。改行確認です。"
-        self.recordModel = [demoData1, demoData2, demoData3]
-        
-        
         setTableView()
+        // デモデータ
+        setupDemoRecord()
+        // 更新
+        listDetailView.reloadData()
+        
+    }
+    
+    private func setupDemoRecord() {
+        let date = Date()
+        let calendar = Calendar.current
+        
+        recordModel = [
+            RecordModel(recordDate: date, recordText: "テスト１"),
+            RecordModel(recordDate: calendar.date(byAdding: .day, value: -11, to: date)!, recordText: "テスト2。改行確認"),
+            RecordModel(recordDate: calendar.date(byAdding: .day, value: -22, to: date)!, recordText: "テスト3です。改行確認、改行されていますか？")
+        ]
     }
  
     private func setTableView() {

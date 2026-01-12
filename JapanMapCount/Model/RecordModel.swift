@@ -7,8 +7,18 @@
 
 import Foundation
 
-class RecordModel {
-    var recordDate: Date = Date()
-    var recordText: String = ""
+final class RecordModel {
+    private(set) var recordDate: Date
+    private(set) var recordText: String
+    
+    init(recordDate: Date, recordText: String) {
+        self.recordDate = recordDate
+        self.recordText = recordText
+    }
+    func updateModel(recordDate: Date, recordText: String) {
+        self.recordDate = recordDate
+        self.recordText = recordText
+    }
+    
 }
 
