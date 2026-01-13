@@ -9,10 +9,7 @@ import UIKit
 
 final class JapanMapCountListDetailViewController: UIViewController {
     @IBOutlet weak var listDetailView: UITableView!
-    @IBAction func sortOrderButton(_ sender: Any) {
-    }
-    
-    var prefecture: Prefecture?
+    @IBOutlet weak var sortOrderButton: UIButton!
     
     private var recordModel: [RecordModel] = []
     
@@ -20,6 +17,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
         super.viewDidLoad()
         // タイトルに県名表示
         title = prefecture?.displayName
+        configureSortOrderButton()
         
         setTableView()
         // デモデータ
@@ -46,6 +44,26 @@ final class JapanMapCountListDetailViewController: UIViewController {
         listDetailView.dataSource = self
         listDetailView.delegate = self
     }
+
+    private var prefecture: Prefecture?
+    
+    // prefectureを外部から呼ぶため
+    func setPrefecture(prefecture: Prefecture) {
+        self.prefecture = prefecture
+    }
+    
+    private func configureSortOrderButton() {
+        // アイコン
+        sortOrderButton.setImage(UIImage(systemName: "arrow.up.arrow.down"), for: .normal)
+        // 色
+        sortOrderButton.backgroundColor = .systemBlue
+        sortOrderButton.tintColor = .white
+        // 見た目
+        sortOrderButton.clipsToBounds = true
+        sortOrderButton.layer.cornerRadius = sortOrderButton.frame.width / 2
+
+    }
+    
     
 }
 
