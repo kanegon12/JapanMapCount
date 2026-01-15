@@ -18,13 +18,11 @@ final class JapanMapCountTopViewController: UIViewController {
 }
 
 extension JapanMapCountTopViewController: JapanMapViewDelegate {
-    func japanMapView(_ mapView: JapanMapView, didTap prefecture: Prefecture) {
-        // Storyboardを指定して生成
+    func pushListDetail(_ mapView: JapanMapView, didTap prefecture: Prefecture) {
         let storyboard = UIStoryboard(name: "JapanMapCountListDetail", bundle: nil)
-        guard let listDetailViewController = storyboard.instantiateViewController(withIdentifier: "JapanMapCountListDetail") as? JapanMapCountListDetailViewController else { return }
-        // 値を渡す
-        listDetailViewController.setPrefecture(prefecture: prefecture)
-        // push遷移
-        navigationController?.pushViewController(listDetailViewController, animated: true)
+        let detailViewController = storyboard.instantiateViewController(identifier: "JapanMapCountListDetail") { coder in
+            return JapanMapCountListDetailViewController(coder: coder, prefecture: prefecture)
+        }
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
