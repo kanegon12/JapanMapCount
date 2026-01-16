@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="udo-jz-bie">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
@@ -11,7 +11,7 @@
         <!--Japan Map Count New Registration View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="JapanMapCountNewRegistrationViewController" customModule="JapanMapCount" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JapanMapCountNewRegistration" id="Y6W-OH-hqX" customClass="JapanMapCountNewRegistrationViewController" customModule="JapanMapCount" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,9 +26,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メモ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZK-3Z-Mek">
-                                <rect key="frame" x="0.0" y="272" width="393" height="150"/>
+                                <rect key="frame" x="0.0" y="272" width="393" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="BCt-Va-Nkv"/>
+                                    <constraint firstAttribute="height" constant="100" id="BCt-Va-Nkv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -71,7 +71,7 @@
         <!--Navigation Controller-->
         <scene sceneID="MPW-Ey-3H5">
             <objects>
-                <navigationController storyboardIdentifier="JapanMapCountNewRegistration" automaticallyAdjustsScrollViewInsets="NO" id="udo-jz-bie" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="udo-jz-bie" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="55M-xy-8FW">
                         <rect key="frame" x="0.0" y="118" width="393" height="54"/>

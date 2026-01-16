@@ -12,12 +12,14 @@ final class JapanMapCountListDetailViewController: UIViewController {
     @IBOutlet weak var sortOrderButton: UIButton!
     @IBAction func newRegistrationButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "JapanMapCountNewRegistration", bundle: nil)
-        guard let navigationViewContloeer = storyboard.instantiateInitialViewController(creator: { coder in
-            return UINavigationController(coder: coder)
-        }) else { return}
-        navigationViewContloeer.modalPresentationStyle = .fullScreen
-        present(navigationViewContloeer, animated: true)
+        let newRegistrationViewController = storyboard.instantiateViewController(identifier: "JapanMapCountNewRegistration", creator: { coder in
+            return JapanMapCountNewRegistrationViewController(coder: coder, delegate: self)
+        }) 
+        let navigationViewController = UINavigationController(rootViewController: newRegistrationViewController)
+        navigationViewController.modalPresentationStyle = .fullScreen
+        present(navigationViewController, animated: true)
     }
+    
     private let prefecture: Prefecture
     private var recordModel: [RecordModel] = []
     
@@ -42,7 +44,6 @@ final class JapanMapCountListDetailViewController: UIViewController {
         setupDemoRecord()
         // 更新
         listDetailView.reloadData()
-        
     }
     
     private func setupDemoRecord() {
@@ -62,12 +63,6 @@ final class JapanMapCountListDetailViewController: UIViewController {
         listDetailView.dataSource = self
         listDetailView.delegate = self
     }
-
-    
-//    // prefectureを外部から呼ぶため
-//    func setPrefecture(prefecture: Prefecture) {
-//        self.prefecture = prefecture
-//    }
     
     private func configureSortOrderButton() {
         // アイコン
@@ -99,5 +94,14 @@ extension JapanMapCountListDetailViewController: UITableViewDataSource {
 }
 
 extension JapanMapCountListDetailViewController: UITableViewDelegate {
+    
+}
+
+extension JapanMapCountListDetailViewController: JapanMapCountNewRegistrationViewControllerDelegate {
+    func tapToSaveButton(_ ViewController: JapanMapCountNewRegistrationViewController, didSave record: RecordModel) {
+        recordModel.insert(record, at: 0)
+        listDetailView.reloadData()
+    }
+    
     
 }

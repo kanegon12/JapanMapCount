@@ -4,6 +4,9 @@
 //
 //  Created by Newbie on 2026/01/14.
 //
+protocol JapanMapCountNewRegistrationViewControllerDelegate: AnyObject {
+    func tapToSaveButton(_ ViewController: JapanMapCountNewRegistrationViewController, didSave record: RecordModel)
+}
 
 import UIKit
 
@@ -14,23 +17,41 @@ class JapanMapCountNewRegistrationViewController: UIViewController {
     }
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBAction func didTapSaveButton(_ sender: Any) {
+        let date = datePicker.date
+        let text = memoTextField.text ?? ""
+        
+        let record = RecordModel(recordDate: date, recordText: text)
+        delegate?.tapToSaveButton(self, didSave: record)
+        
+        dismiss(animated: true)
     }
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var memoTextField: UITextField!
     
     let datePicker = UIDatePicker()
+    weak var delegate: JapanMapCountNewRegistrationViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCancelButton()
         configureDateTextField()
         configureMemoTextField()
+        configureSaveButton()
         setDatePicker()
-
+        
         datePicker.date = Date()
         updataTextField(with: datePicker.date)
         
     }
+    init?(coder: NSCoder, delegate: JapanMapCountNewRegistrationViewControllerDelegate) {
+        self.delegate = delegate
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     /// キャンセルボタン設定
     private func configureCancelButton() {
         // 赤色に
@@ -94,11 +115,39 @@ class JapanMapCountNewRegistrationViewController: UIViewController {
         view.endEditing(true)
     }
     
+    /// メモのTextField設定
     private func configureMemoTextField() {
         // 枠線を太くする
-            memoTextField.borderStyle = .none
-            memoTextField.layer.borderWidth = 1.5
-            memoTextField.layer.borderColor = UIColor.black.cgColor
-            memoTextField.clipsToBounds = true
+        memoTextField.borderStyle = .none
+        memoTextField.layer.borderWidth = 1.5
+        memoTextField.layer.borderColor = UIColor.black.cgColor
+        memoTextField.clipsToBounds = true
+        // 文字の大きさ
+        memoTextField.font = UIFont.systemFont(ofSize: 25)
+        let tools = UIToolbar()
+        tools.sizeToFit()
+        
+        let spacer = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        let closeButton = UIBarButtonItem(
+            title: "完了",
+            style: .done,
+            target: self,
+            action: #selector(closeTapButton)
+        )
+        tools.items = [spacer, closeButton]
+        memoTextField.inputAccessoryView = tools
+    }
+    
+    @objc func closeTapButton() {
+        memoTextField.endEditing(true)
+        memoTextField.resignFirstResponder()
+    }
+    /// 保存ボタン設定
+    private func configureSaveButton() {
+        saveButton.tintColor = .systemBlue
     }
 }
