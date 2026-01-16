@@ -62,12 +62,6 @@ final class JapanMapCountListDetailViewController: UIViewController {
         listDetailView.dataSource = self
         listDetailView.delegate = self
     }
-
-    
-//    // prefectureを外部から呼ぶため
-//    func setPrefecture(prefecture: Prefecture) {
-//        self.prefecture = prefecture
-//    }
     
     private func configureSortOrderButton() {
         // アイコン

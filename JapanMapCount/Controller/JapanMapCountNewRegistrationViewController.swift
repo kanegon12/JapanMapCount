@@ -7,16 +7,18 @@
 
 import UIKit
 
-class JapanMapCountNewRegistrationViewController: UIViewController {
+final class JapanMapCountNewRegistrationViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var memoTextField: UITextField!
     @IBAction func didTapCancelButton(_ sender: Any) {
         dismiss(animated: true)
     }
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     @IBAction func didTapSaveButton(_ sender: Any) {
     }
-    @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var memoTextField: UITextField!
+
     
     let datePicker = UIDatePicker()
     
