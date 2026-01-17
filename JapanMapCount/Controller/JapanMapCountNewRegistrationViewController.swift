@@ -9,6 +9,7 @@ protocol JapanMapCountNewRegistrationViewControllerDelegate: AnyObject {
 }
 
 import UIKit
+import RealmSwift
 
 class JapanMapCountNewRegistrationViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -18,11 +19,11 @@ class JapanMapCountNewRegistrationViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBAction func didTapSaveButton(_ sender: Any) {
         let date = datePicker.date
-        let text = memoTextField.text ?? ""
+        // スペースと改行トリミング
+        let text = (memoTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         
-        let record = RecordModel(recordDate: date, recordText: text)
+        let record = RecordModel(prefecture: prefecture, recordDate: date, recordText: text)
         delegate?.tapToSaveButton(self, didSave: record)
-        
         dismiss(animated: true)
     }
     @IBOutlet weak var dateTextField: UITextField!
@@ -30,6 +31,7 @@ class JapanMapCountNewRegistrationViewController: UIViewController {
     
     let datePicker = UIDatePicker()
     weak var delegate: JapanMapCountNewRegistrationViewControllerDelegate?
+    private let prefecture: Prefecture
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +45,12 @@ class JapanMapCountNewRegistrationViewController: UIViewController {
         updataTextField(with: datePicker.date)
         
     }
-    init?(coder: NSCoder, delegate: JapanMapCountNewRegistrationViewControllerDelegate) {
+    init?(coder: NSCoder, delegate: JapanMapCountNewRegistrationViewControllerDelegate, prefecture: Prefecture) {
         self.delegate = delegate
+        self.prefecture = prefecture
         super.init(coder: coder)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

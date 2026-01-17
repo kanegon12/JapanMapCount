@@ -19,7 +19,7 @@ class RecordListCell: UITableViewCell {
         // 改行を2列に
         recordTextLabel.numberOfLines = 2
     }
-
+    
     func configure(recordModel: RecordModel) {
         self.model = recordModel
         let formatter = DateFormatter()
@@ -30,7 +30,7 @@ class RecordListCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
 }
