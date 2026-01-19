@@ -10,13 +10,31 @@ import UIKit
 final class JapanMapCountListDetailViewController: UIViewController {
     @IBOutlet weak var listDetailView: UITableView!
     @IBOutlet weak var sortOrderButton: UIButton!
-    
+    @IBAction func newRegistrationButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "JapanMapCountNewRegistration", bundle: nil)
+        guard let navigationViewContloeer = storyboard.instantiateInitialViewController(creator: { coder in
+            return UINavigationController(coder: coder)
+        }) else { return}
+        navigationViewContloeer.modalPresentationStyle = .fullScreen
+        present(navigationViewContloeer, animated: true)
+    }
+    private let prefecture: Prefecture
     private var recordModel: [RecordModel] = []
+    
+    init?(coder: NSCoder, prefecture: Prefecture) {
+        self.prefecture = prefecture
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("int(coder:) has not been errSecUnimplemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // タイトルに県名表示
-        title = prefecture?.displayName
+        title = prefecture.displayName
         configureSortOrderButton()
         
         setTableView()
@@ -26,6 +44,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
         listDetailView.reloadData()
         
     }
+    
     
     private func setupDemoRecord() {
         let date = Date()
@@ -43,13 +62,6 @@ final class JapanMapCountListDetailViewController: UIViewController {
         listDetailView.register(nib, forCellReuseIdentifier: "RecordListCell")
         listDetailView.dataSource = self
         listDetailView.delegate = self
-    }
-
-    private var prefecture: Prefecture?
-    
-    // prefectureを外部から呼ぶため
-    func setPrefecture(prefecture: Prefecture) {
-        self.prefecture = prefecture
     }
     
     private func configureSortOrderButton() {

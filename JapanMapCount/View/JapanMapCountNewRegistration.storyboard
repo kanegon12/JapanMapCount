@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="udo-jz-bie">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Japan Map Count New Registration View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="JapanMapCountNewRegistrationViewController" customModule="JapanMapCount" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2024年11月22日" borderStyle="roundedRect" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="6Jd-Tw-Lmf">
+                                <rect key="frame" x="25" y="197" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="BbL-Yu-axZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="vxc-tk-zud"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メモ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZK-3Z-Mek">
+                                <rect key="frame" x="0.0" y="272" width="393" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="BCt-Va-Nkv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AZK-3Z-Mek" firstAttribute="top" secondItem="6Jd-Tw-Lmf" secondAttribute="bottom" constant="25" id="1VO-Kp-pf8"/>
+                            <constraint firstItem="6Jd-Tw-Lmf" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="25" id="604-19-n4o"/>
+                            <constraint firstItem="6Jd-Tw-Lmf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="CZa-SC-ebD"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="6Jd-Tw-Lmf" secondAttribute="trailing" constant="25" id="egD-IH-9gb"/>
+                            <constraint firstItem="AZK-3Z-Mek" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="rfS-sL-lfO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="AZK-3Z-Mek" secondAttribute="trailing" id="ysG-EQ-B7j"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fR8-3A-nov">
+                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="zBN-le-9tj">
+                            <connections>
+                                <action selector="didTapCancelButton:" destination="Y6W-OH-hqX" id="uw7-dr-R91"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="RdD-L6-PJV">
+                            <connections>
+                                <action selector="didTapSaveButton:" destination="Y6W-OH-hqX" id="v75-Rg-qao"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="zBN-le-9tj" id="Yyf-2d-PuP"/>
+                        <outlet property="dateTextField" destination="6Jd-Tw-Lmf" id="P47-VS-od5"/>
+                        <outlet property="memoTextField" destination="AZK-3Z-Mek" id="KhA-Cc-3vv"/>
+                        <outlet property="saveButton" destination="RdD-L6-PJV" id="uCx-eH-4Bw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-327.48091603053433" y="55.633802816901408"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MPW-Ey-3H5">
+            <objects>
+                <navigationController storyboardIdentifier="JapanMapCountNewRegistration" automaticallyAdjustsScrollViewInsets="NO" id="udo-jz-bie" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="55M-xy-8FW">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="nsH-jJ-frf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jkq-Vo-ucu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1202" y="56"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

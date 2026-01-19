@@ -7,8 +7,9 @@
 
 import UIKit
 
+// 名前変更をする　わかりやすい名前に
 protocol JapanMapViewDelegate: AnyObject {
-    func japanMapView(_ mapView: JapanMapView, didTap prefecture: Prefecture)
+    func pushListDetail(_ mapView: JapanMapView, didTap prefecture: Prefecture)
 }
 
 @IBDesignable final class JapanMapView: UIView {
@@ -51,7 +52,7 @@ protocol JapanMapViewDelegate: AnyObject {
                 print("\(prefecture)がタップされました")
                 
                 // タップを通知
-                delegate?.japanMapView(self, didTap: prefecture)
+                delegate?.pushListDetail(self, didTap: prefecture)
                 return
             }
             
