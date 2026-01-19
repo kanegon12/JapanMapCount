@@ -46,6 +46,11 @@ final class JapanMapCountListDetailViewController: UIViewController {
         listDetailView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        listDetailView.reloadData()
+    }
+    
     private func setupDemoRecord() {
         let date = Date()
         let calendar = Calendar.current
@@ -100,8 +105,5 @@ extension JapanMapCountListDetailViewController: UITableViewDelegate {
 extension JapanMapCountListDetailViewController: JapanMapCountNewRegistrationViewControllerDelegate {
     func tapToSaveButton(_ ViewController: JapanMapCountNewRegistrationViewController, didSave record: RecordModel) {
         recordModel.insert(record, at: 0)
-        listDetailView.reloadData()
     }
-    
-    
 }
