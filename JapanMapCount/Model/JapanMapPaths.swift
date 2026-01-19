@@ -89,7 +89,7 @@ enum Prefecture: Int, CaseIterable {
         case .niigata:
             return "新潟"
         case .toyama:
-             return "富山"
+            return "富山"
         case .ishikawa:
             return "石川"
         case .fukui:

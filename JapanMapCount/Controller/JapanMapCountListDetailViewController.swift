@@ -6,22 +6,32 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class JapanMapCountListDetailViewController: UIViewController {
     @IBOutlet weak var listDetailView: UITableView!
     @IBOutlet weak var sortOrderButton: UIButton!
     @IBAction func newRegistrationButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "JapanMapCountNewRegistration", bundle: nil)
-        let newRegistrationViewController = storyboard.instantiateViewController(identifier: "JapanMapCountNewRegistration", creator: { coder in
-            return JapanMapCountNewRegistrationViewController(coder: coder, delegate: self)
-        }) 
+        let newRegistrationViewController = storyboard.instantiateViewController(
+            identifier: "JapanMapCountNewRegistration"
+        ) { coder in
+            JapanMapCountNewRegistrationViewController(
+                coder: coder,
+                delegate: self,
+                prefecture: self.prefecture
+            )
+        }
         let navigationViewController = UINavigationController(rootViewController: newRegistrationViewController)
         navigationViewController.modalPresentationStyle = .fullScreen
         present(navigationViewController, animated: true)
     }
     
     private let prefecture: Prefecture
-    private var recordModel: [RecordModel] = []
+    private let realm = try! Realm()
+    private var records: Results<RecordModel>!
+    
+    
     
     init?(coder: NSCoder, prefecture: Prefecture) {
         self.prefecture = prefecture
@@ -35,15 +45,17 @@ final class JapanMapCountListDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        records = realm.objects(RecordModel.self)
+            .where { $0.prefectureNumber == prefecture.rawValue }
+            .sorted(byKeyPath: "recordDate", ascending: false)
         // タイトルに県名表示
         title = prefecture.displayName
         configureSortOrderButton()
-        
         setTableView()
-        // デモデータ
-        setupDemoRecord()
         // 更新
         listDetailView.reloadData()
+
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,23 +63,12 @@ final class JapanMapCountListDetailViewController: UIViewController {
         listDetailView.reloadData()
     }
     
-    
-    private func setupDemoRecord() {
-        let date = Date()
-        let calendar = Calendar.current
-        
-        recordModel = [
-            RecordModel(recordDate: date, recordText: "テスト１"),
-            RecordModel(recordDate: calendar.date(byAdding: .day, value: -11, to: date)!, recordText: "テスト2。改行確認"),
-            RecordModel(recordDate: calendar.date(byAdding: .day, value: -22, to: date)!, recordText: "テスト3です。改行確認、改行されていますか？")
-        ]
-    }
- 
     private func setTableView() {
         let nib = UINib(nibName: "RecordListCell", bundle: nil)
         listDetailView.register(nib, forCellReuseIdentifier: "RecordListCell")
         listDetailView.dataSource = self
         listDetailView.delegate = self
+
     }
     
     private func configureSortOrderButton() {
@@ -79,7 +80,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
         // 見た目
         sortOrderButton.clipsToBounds = true
         sortOrderButton.layer.cornerRadius = sortOrderButton.frame.width / 2
-
+        
     }
     
     
@@ -87,12 +88,15 @@ final class JapanMapCountListDetailViewController: UIViewController {
 
 extension JapanMapCountListDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recordModel.count
+        return records?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecordListCell", for: indexPath) as! RecordListCell
-        cell.configure(recordModel: recordModel[indexPath.row])
+        guard let records, indexPath.row < records.count else {
+            return cell
+        }
+        cell.configure(recordModel: records[indexPath.row])
         return cell
     }
     
@@ -105,6 +109,8 @@ extension JapanMapCountListDetailViewController: UITableViewDelegate {
 
 extension JapanMapCountListDetailViewController: JapanMapCountNewRegistrationViewControllerDelegate {
     func tapToSaveButton(_ ViewController: JapanMapCountNewRegistrationViewController, didSave record: RecordModel) {
-        recordModel.insert(record, at: 0)
+        try! realm.write {
+            realm.add(record)
+        }
     }
 }
