@@ -7,7 +7,6 @@
 
 import UIKit
 
-// 名前変更をする　わかりやすい名前に
 protocol JapanMapViewDelegate: AnyObject {
     func pushListDetail(_ mapView: JapanMapView, didTap prefecture: Prefecture)
 }
