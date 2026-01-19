@@ -58,6 +58,11 @@ final class JapanMapCountListDetailViewController: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        listDetailView.reloadData()
+    }
+    
     private func setTableView() {
         let nib = UINib(nibName: "RecordListCell", bundle: nil)
         listDetailView.register(nib, forCellReuseIdentifier: "RecordListCell")
@@ -107,6 +112,5 @@ extension JapanMapCountListDetailViewController: JapanMapCountNewRegistrationVie
         try! realm.write {
             realm.add(record)
         }
-        listDetailView.reloadData()
     }
 }

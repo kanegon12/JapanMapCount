@@ -11,12 +11,15 @@ protocol JapanMapCountNewRegistrationViewControllerDelegate: AnyObject {
 import UIKit
 import RealmSwift
 
-class JapanMapCountNewRegistrationViewController: UIViewController {
+final class JapanMapCountNewRegistrationViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var memoTextField: UITextField!
     @IBAction func didTapCancelButton(_ sender: Any) {
         dismiss(animated: true)
     }
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     @IBAction func didTapSaveButton(_ sender: Any) {
         let date = datePicker.date
         // スペースと改行トリミング
@@ -26,8 +29,7 @@ class JapanMapCountNewRegistrationViewController: UIViewController {
         delegate?.tapToSaveButton(self, didSave: record)
         dismiss(animated: true)
     }
-    @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var memoTextField: UITextField!
+
     
     let datePicker = UIDatePicker()
     weak var delegate: JapanMapCountNewRegistrationViewControllerDelegate?
