@@ -45,6 +45,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
         
     }
     
+    
     private func setupDemoRecord() {
         let date = Date()
         let calendar = Calendar.current
