@@ -31,6 +31,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="sortOrderButtonLogic:" destination="XcP-65-ZKh" eventType="touchUpInside" id="0G7-Qi-I1m"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ar5-7G-500"/>
@@ -48,12 +51,13 @@
                         <barButtonItem key="rightBarButtonItem" title="新規登録" id="JID-8j-uIH">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="newRegistrationButton:" destination="XcP-65-ZKh" id="51C-jv-H8F"/>
+                                <action selector="didTapNewRegistrationButton:" destination="XcP-65-ZKh" id="51C-jv-H8F"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="listDetailView" destination="rDH-kY-yf0" id="YgG-A4-jyX"/>
+                        <outlet property="newRegistrationButton" destination="JID-8j-uIH" id="xym-SA-LS9"/>
                         <outlet property="sortOrderButton" destination="nzE-AK-kdh" id="0vH-Ad-nDX"/>
                     </connections>
                 </viewController>

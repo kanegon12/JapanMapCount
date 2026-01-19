@@ -10,8 +10,9 @@ import RealmSwift
 
 final class JapanMapCountListDetailViewController: UIViewController {
     @IBOutlet weak var listDetailView: UITableView!
+    @IBOutlet weak var newRegistrationButton: UIBarButtonItem!
     @IBOutlet weak var sortOrderButton: UIButton!
-    @IBAction func newRegistrationButton(_ sender: Any) {
+    @IBAction func didTapNewRegistrationButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "JapanMapCountNewRegistration", bundle: nil)
         let newRegistrationViewController = storyboard.instantiateViewController(
             identifier: "JapanMapCountNewRegistration"
@@ -27,9 +28,16 @@ final class JapanMapCountListDetailViewController: UIViewController {
         present(navigationViewController, animated: true)
     }
     
+    @IBAction func sortOrderButtonLogic(_ sender: Any) {
+        isAscending.toggle()
+        fetchRecords()
+        listDetailView.reloadData()
+    }
+    
     private let prefecture: Prefecture
     private let realm = try! Realm()
     private var records: Results<RecordModel>!
+    private var isAscending = false
     
     
     
@@ -45,17 +53,15 @@ final class JapanMapCountListDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        records = realm.objects(RecordModel.self)
-            .where { $0.prefectureNumber == prefecture.rawValue }
-            .sorted(byKeyPath: "recordDate", ascending: false)
+
         // タイトルに県名表示
         title = prefecture.displayName
+        configureNewRegistrationButton()
         configureSortOrderButton()
         setTableView()
+        fetchRecords()
         // 更新
         listDetailView.reloadData()
-
-
     }
     
     private func setTableView() {
@@ -64,6 +70,16 @@ final class JapanMapCountListDetailViewController: UIViewController {
         listDetailView.dataSource = self
         listDetailView.delegate = self
 
+    }
+    /// 並び順
+    private func fetchRecords() {
+        records = realm.objects(RecordModel.self)
+            .where { $0.prefectureNumber == prefecture.rawValue }
+            .sorted(byKeyPath: "recordDate", ascending: isAscending)
+    }
+    
+    private func configureNewRegistrationButton() {
+        newRegistrationButton.tintColor = .systemBlue
     }
     
     private func configureSortOrderButton() {
@@ -93,6 +109,15 @@ extension JapanMapCountListDetailViewController: UITableViewDataSource {
         }
         cell.configure(recordModel: records[indexPath.row])
         return cell
+    }
+    /// cellスワイプで削除
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        let record = records[indexPath.row]
+        try! realm.write {
+            realm.delete(record)
+            listDetailView.reloadData()
+        }
     }
     
     
