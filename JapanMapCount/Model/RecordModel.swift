@@ -27,7 +27,7 @@ final class RecordModel: Object {
         self.recordText = recordText
     }
     
-    func modelSaveProcess(recordDate: Date, recordText: String) {
+    func saveModel(recordDate: Date, recordText: String) {
         // 新規か更新か判断
         guard let realm = self.realm else {
             // 新規

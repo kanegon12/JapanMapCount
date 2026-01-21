@@ -28,7 +28,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
         present(navigationViewController, animated: true)
     }
     
-    @IBAction func sortOrderButtonLogic(_ sender: Any) {
+    @IBAction func didTapSortButton(_ sender: Any) {
         isAscending.toggle()
         fetchRecords()
         listDetailView.reloadData()
@@ -61,6 +61,11 @@ final class JapanMapCountListDetailViewController: UIViewController {
         setTableView()
         fetchRecords()
         // 更新
+        listDetailView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         listDetailView.reloadData()
     }
     
@@ -132,6 +137,5 @@ extension JapanMapCountListDetailViewController: JapanMapCountNewRegistrationVie
         try! realm.write {
             realm.add(record)
         }
-        listDetailView.reloadData()
     }
 }

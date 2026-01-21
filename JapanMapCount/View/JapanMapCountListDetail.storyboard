@@ -32,7 +32,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
-                                    <action selector="sortOrderButtonLogic:" destination="XcP-65-ZKh" eventType="touchUpInside" id="0G7-Qi-I1m"/>
+                                    <action selector="didTapSortButton:" destination="XcP-65-ZKh" eventType="touchUpInside" id="0G7-Qi-I1m"/>
                                 </connections>
                             </button>
                         </subviews>
