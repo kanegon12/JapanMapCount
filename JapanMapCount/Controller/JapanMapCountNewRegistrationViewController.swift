@@ -5,7 +5,7 @@
 //  Created by Newbie on 2026/01/14.
 //
 protocol JapanMapCountNewRegistrationViewControllerDelegate: AnyObject {
-    func tapToSaveButton(_ ViewController: JapanMapCountNewRegistrationViewController, didSave record: RecordModel)
+    func tapToSaveButton(date: Date, text: String, prefecture: Prefecture, editingId: ObjectId?)
 }
 
 import UIKit
@@ -25,8 +25,12 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
         // スペースと改行トリミング
         let text = (memoTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         
-        let record = RecordModel(prefecture: prefecture, recordDate: date, recordText: text)
-        delegate?.tapToSaveButton(self, didSave: record)
+        delegate?.tapToSaveButton(
+            date: date,
+            text: text,
+            prefecture: prefecture,
+            editingId: editingRecordId
+        )
         dismiss(animated: true)
     }
 
@@ -34,6 +38,8 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
     let datePicker = UIDatePicker()
     weak var delegate: JapanMapCountNewRegistrationViewControllerDelegate?
     private let prefecture: Prefecture
+    private let editingRecordId: ObjectId?
+    private let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,20 +49,39 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
         configureSaveButton()
         setDatePicker()
         
+        
         datePicker.date = Date()
         updataTextField(with: datePicker.date)
         
+        setInitialValues()
     }
-    init?(coder: NSCoder, delegate: JapanMapCountNewRegistrationViewControllerDelegate, prefecture: Prefecture) {
+    init?(coder: NSCoder, delegate: JapanMapCountNewRegistrationViewControllerDelegate, prefecture: Prefecture, editingRecordId: ObjectId?) {
         self.delegate = delegate
         self.prefecture = prefecture
+        self.editingRecordId = editingRecordId
         super.init(coder: coder)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    /// 新規か編集か判断してデータを挿入
+    private func setInitialValues() {
+        if let id = editingRecordId,
+           let record = realm.object(ofType: RecordModel.self, forPrimaryKey: id) {
+            // datePickerに記録されていた日付挿入
+            datePicker.date = record.recordDate
+            // memoTextFieldとdateTextFieldに記録していたデータ挿入
+            updataTextField(with: record.recordDate)
+            memoTextField.text = record.recordText
+        } else {
+            // 新規の場合空
+            datePicker.date = Date()
+            updataTextField(with: datePicker.date)
+            memoTextField.text = ""
+        }
+        
+    }
     /// キャンセルボタン設定
     private func configureCancelButton() {
         // 赤色に

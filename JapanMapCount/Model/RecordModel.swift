@@ -12,9 +12,9 @@ import Realm
 final class RecordModel: Object {
     
     @Persisted(primaryKey: true) var id: ObjectId
-    @Persisted private(set) var prefectureNumber: Int = 0
-    @Persisted private(set) var recordDate: Date = Date()
-    @Persisted private(set) var recordText: String = ""
+    @Persisted var prefectureNumber: Int = 0
+    @Persisted var recordDate: Date = Date()
+    @Persisted var recordText: String = ""
     
     private var prefecture: Prefecture? {
         Prefecture(rawValue: prefectureNumber)
