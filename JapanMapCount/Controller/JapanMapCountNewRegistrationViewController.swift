@@ -34,6 +34,7 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
     let datePicker = UIDatePicker()
     weak var delegate: JapanMapCountNewRegistrationViewControllerDelegate?
     private let prefecture: Prefecture
+    private let textMaxLength = 15
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,8 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
         datePicker.date = Date()
         updataTextField(with: datePicker.date)
         
+        memoTextField.delegate = self
+        memoTextField.addTarget(self, action: #selector(cutFractional(_:)), for: .editingChanged)
     }
     init?(coder: NSCoder, delegate: JapanMapCountNewRegistrationViewControllerDelegate, prefecture: Prefecture) {
         self.delegate = delegate
@@ -154,5 +157,50 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
     /// 保存ボタン設定
     private func configureSaveButton() {
         saveButton.tintColor = .systemBlue
+    }
+    /// 入力文字数制限
+    private func limitTextlength(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // memoTextFieldか判断
+        guard textField === memoTextField else {
+            return true
+        }
+        if textField.markedTextRange != nil {
+            return true
+        }
+        // 現在のTextと文字数を取得
+        let currentText = textField.text ?? ""
+        let currentTextLength = currentText.count
+        // NSRangeをRangeに変換
+        guard let textRange = Range(range, in: currentText) else {
+            return false
+        }
+        // 新しいTextに置き換えと置き換え後の文字数
+        let updatedText = currentText.replacingCharacters(in: textRange, with: string)
+        let newTextLength = updatedText.count
+        // 文字数制限以上の文を削除できる様にするための処理
+        if newTextLength > currentTextLength {
+            guard newTextLength <= textMaxLength else {
+                return false
+            }
+        }
+        return true
+    }
+    /// オーバーした文字をカット
+    @objc private func cutFractional(_ textField: UITextField) {
+        if textField.markedTextRange != nil {
+            return
+        }
+        let text = textField.text ?? ""
+        if text.count > textMaxLength {
+            textField.text = String(text.prefix(textMaxLength))
+        }
+    }
+}
+
+extension JapanMapCountNewRegistrationViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let lmit = limitTextlength(textField, shouldChangeCharactersIn: range, replacementString: string)
+        
+        return lmit
     }
 }
