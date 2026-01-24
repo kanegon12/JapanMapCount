@@ -41,7 +41,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // タイトルに県名表示
         title = prefecture.displayName
         configureNewRegistrationButton()
@@ -64,7 +64,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
         listDetailView.register(nib, forCellReuseIdentifier: "RecordListCell")
         listDetailView.dataSource = self
         listDetailView.delegate = self
-
+        
     }
     /// 並び順
     private func fetchRecords() {
@@ -91,19 +91,19 @@ final class JapanMapCountListDetailViewController: UIViewController {
     /// JapanMapCountNewRegistrationViewControllerへ画面遷移
     private func newRegistration(editing recordId: ObjectId?) {
         let storyboard = UIStoryboard(name: "JapanMapCountNewRegistration", bundle: nil)
-             let newRegistrationViewController = storyboard.instantiateViewController(
-                 identifier: "JapanMapCountNewRegistration"
-             ) { coder in
-                 JapanMapCountNewRegistrationViewController(
-                     coder: coder,
-                     delegate: self,
-                     prefecture: self.prefecture,
-                     editingRecordId: recordId
-                 )
-             }
-             let navigationViewController = UINavigationController(rootViewController: newRegistrationViewController)
-             navigationViewController.modalPresentationStyle = .fullScreen
-             present(navigationViewController, animated: true)
+        let newRegistrationViewController = storyboard.instantiateViewController(
+            identifier: "JapanMapCountNewRegistration"
+        ) { coder in
+            JapanMapCountNewRegistrationViewController(
+                coder: coder,
+                delegate: self,
+                prefecture: self.prefecture,
+                editingRecordId: recordId
+            )
+        }
+        let navigationViewController = UINavigationController(rootViewController: newRegistrationViewController)
+        navigationViewController.modalPresentationStyle = .fullScreen
+        present(navigationViewController, animated: true)
     }
     
 }
@@ -138,7 +138,7 @@ extension JapanMapCountListDetailViewController: UITableViewDelegate {
         let record = records[indexPath.row]
         newRegistration(editing: record.id)
     }
-
+    
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "削除"
     }

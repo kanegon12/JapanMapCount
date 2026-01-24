@@ -25,7 +25,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メモ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZK-3Z-Mek">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メモ　15文字以内" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZK-3Z-Mek">
                                 <rect key="frame" x="0.0" y="272" width="393" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="BCt-Va-Nkv"/>
