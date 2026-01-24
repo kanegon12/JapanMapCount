@@ -26,20 +26,14 @@ final class RecordModel: Object {
         self.recordDate = recordDate
         self.recordText = recordText
     }
-    
-    func saveModel(recordDate: Date, recordText: String) {
-        // 新規か更新か判断
-        guard let realm = self.realm else {
-            // 新規
-            self.recordDate = recordDate
-            self.recordText = recordText
-            return
-        }
-        // 更新
-            try! realm.write {
-                self.recordDate = recordDate
-                self.recordText = recordText
-        }
+    /// 外部からrecordDateとrecordTextを変更するため
+    func updateRecord(recordDate: Date, recordText: String) {
+        self.recordDate = recordDate
+        self.recordText = recordText
+    }
+    /// 外部からprefectureNumberを変更するため
+    func updatePrefectureNumber(prefectureNumber: Int) {
+        self.prefectureNumber = prefectureNumber
     }
 }
 
