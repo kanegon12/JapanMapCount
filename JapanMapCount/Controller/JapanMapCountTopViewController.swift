@@ -10,11 +10,20 @@ import UIKit
 final class JapanMapCountTopViewController: UIViewController {
     
     @IBOutlet weak var mapView: JapanMapView!
+    @IBOutlet weak var assistanceMessage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        
+        setAssistanceMessage()
     }
+    /// assistanceMessage設定
+    private func setAssistanceMessage() {
+        assistanceMessage.text = "訪れた県をタップして記録しよう！"
+        assistanceMessage.font = UIFont.boldSystemFont(ofSize: 24)
+    }
+    
 }
 
 extension JapanMapCountTopViewController: JapanMapViewDelegate {
