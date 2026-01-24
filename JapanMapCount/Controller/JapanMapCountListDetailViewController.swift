@@ -13,19 +13,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
     @IBOutlet weak var newRegistrationButton: UIBarButtonItem!
     @IBOutlet weak var sortOrderButton: UIButton!
     @IBAction func didTapNewRegistrationButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "JapanMapCountNewRegistration", bundle: nil)
-        let newRegistrationViewController = storyboard.instantiateViewController(
-            identifier: "JapanMapCountNewRegistration"
-        ) { coder in
-            JapanMapCountNewRegistrationViewController(
-                coder: coder,
-                delegate: self,
-                prefecture: self.prefecture
-            )
-        }
-        let navigationViewController = UINavigationController(rootViewController: newRegistrationViewController)
-        navigationViewController.modalPresentationStyle = .fullScreen
-        present(navigationViewController, animated: true)
+        newRegistration(editing: nil)
     }
     
     @IBAction func didTapSortButton(_ sender: Any) {
@@ -53,7 +41,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // タイトルに県名表示
         title = prefecture.displayName
         configureNewRegistrationButton()
@@ -69,12 +57,14 @@ final class JapanMapCountListDetailViewController: UIViewController {
         listDetailView.reloadData()
     }
     
+    
+    
     private func setTableView() {
         let nib = UINib(nibName: "RecordListCell", bundle: nil)
         listDetailView.register(nib, forCellReuseIdentifier: "RecordListCell")
         listDetailView.dataSource = self
         listDetailView.delegate = self
-
+        
     }
     /// 並び順
     private func fetchRecords() {
@@ -98,7 +88,23 @@ final class JapanMapCountListDetailViewController: UIViewController {
         sortOrderButton.layer.cornerRadius = sortOrderButton.frame.width / 2
         
     }
-    
+    /// JapanMapCountNewRegistrationViewControllerへ画面遷移
+    private func newRegistration(editing recordId: ObjectId?) {
+        let storyboard = UIStoryboard(name: "JapanMapCountNewRegistration", bundle: nil)
+        let newRegistrationViewController = storyboard.instantiateViewController(
+            identifier: "JapanMapCountNewRegistration"
+        ) { coder in
+            JapanMapCountNewRegistrationViewController(
+                coder: coder,
+                delegate: self,
+                prefecture: self.prefecture,
+                editingRecordId: recordId
+            )
+        }
+        let navigationViewController = UINavigationController(rootViewController: newRegistrationViewController)
+        navigationViewController.modalPresentationStyle = .fullScreen
+        present(navigationViewController, animated: true)
+    }
     
 }
 
@@ -121,21 +127,39 @@ extension JapanMapCountListDetailViewController: UITableViewDataSource {
         let record = records[indexPath.row]
         try! realm.write {
             realm.delete(record)
-            listDetailView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
-    
-    
 }
 
 extension JapanMapCountListDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let record = records[indexPath.row]
+        newRegistration(editing: record.id)
+    }
     
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "削除"
+    }
 }
 
 extension JapanMapCountListDetailViewController: JapanMapCountNewRegistrationViewControllerDelegate {
-    func tapToSaveButton(_ ViewController: JapanMapCountNewRegistrationViewController, didSave record: RecordModel) {
+    func tapToSaveButton(date: Date, text: String, prefecture: Prefecture, editingId: ObjectId?) {
         try! realm.write {
-            realm.add(record)
+            if let id = editingId,
+               let record = realm.object(ofType: RecordModel.self, forPrimaryKey: id) {
+                // 編集
+                record.updateRecord(recordDate: date, recordText: text)
+            } else {
+                // 新規
+                let newRecord = RecordModel()
+                newRecord.updatePrefectureNumber(prefectureNumber: prefecture.rawValue)
+                newRecord.updateRecord(recordDate: date, recordText: text)
+                
+                realm.add(newRecord)
+            }
         }
     }
+    
 }
