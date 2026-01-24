@@ -147,17 +147,16 @@ extension JapanMapCountListDetailViewController: JapanMapCountNewRegistrationVie
             if let id = editingId,
                let record = realm.object(ofType: RecordModel.self, forPrimaryKey: id) {
                 // 編集
-                record.recordDate = date
-                record.recordText = text
+                record.updateRecord(recordDate: date, recordText: text)
             } else {
                 // 新規
                 let newRecord = RecordModel()
-                newRecord.prefectureNumber = prefecture.rawValue
-                newRecord.recordDate = date
-                newRecord.recordText = text
+                newRecord.updatePrefectureNumber(prefectureNumber: prefecture.rawValue)
+                newRecord.updateRecord(recordDate: date, recordText: text)
                 
                 realm.add(newRecord)
             }
         }
     }
+    
 }
