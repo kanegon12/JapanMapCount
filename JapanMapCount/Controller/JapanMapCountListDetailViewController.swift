@@ -127,7 +127,7 @@ extension JapanMapCountListDetailViewController: UITableViewDataSource {
         let record = records[indexPath.row]
         try! realm.write {
             realm.delete(record)
-            listDetailView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
 }
@@ -139,6 +139,9 @@ extension JapanMapCountListDetailViewController: UITableViewDelegate {
         newRegistration(editing: record.id)
     }
 
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "削除"
+    }
 }
 
 extension JapanMapCountListDetailViewController: JapanMapCountNewRegistrationViewControllerDelegate {
