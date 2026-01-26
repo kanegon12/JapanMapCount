@@ -20,13 +20,22 @@
                                 <rect key="frame" x="0.0" y="172" width="393" height="612"/>
                                 <color key="backgroundColor" systemColor="systemCyanColor"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AssistanceMessage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaM-hb-1MT">
+                                <rect key="frame" x="3" y="704" width="387" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="REs-Cp-IaA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1Ae-1W-Q4O"/>
+                            <constraint firstItem="gaM-hb-1MT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="3" id="DZH-j2-Gs7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="REs-Cp-IaA" secondAttribute="trailing" id="Fln-y6-nyN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gaM-hb-1MT" secondAttribute="trailing" constant="3" id="PaM-v0-IpL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gaM-hb-1MT" secondAttribute="bottom" constant="60" id="SiW-1f-EHX"/>
                             <constraint firstItem="REs-Cp-IaA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Waz-HJ-c9w"/>
-                            <constraint firstItem="REs-Cp-IaA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cUM-bl-XXf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="REs-Cp-IaA" secondAttribute="bottom" id="rDl-kd-sVw"/>
                         </constraints>
                     </view>
@@ -34,6 +43,7 @@
                         <barButtonItem key="backBarButtonItem" title="戻る" id="HH2-VK-uL1"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="assistanceMessage" destination="gaM-hb-1MT" id="qoZ-No-L6q"/>
                         <outlet property="mapView" destination="REs-Cp-IaA" id="rhF-t9-leD"/>
                     </connections>
                 </viewController>
