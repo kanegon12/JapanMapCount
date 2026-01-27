@@ -106,6 +106,20 @@ final class JapanMapCountListDetailViewController: UIViewController {
         present(navigationViewController, animated: true)
     }
     
+    private func updateColorState(prefectureNumber: Int, isFluctuation: Bool) {
+        let state = realm.object(ofType: PrefectureColorStateModel.self,forPrimaryKey: prefectureNumber) ?? PrefectureColorStateModel(prefectureNumber: prefectureNumber)
+        // stateを新規で作ったらrealmにaddする
+        if state.realm == nil {
+            realm.add(state)
+        }
+        if isFluctuation {
+            state.upCount()
+        } else {
+            state.downCount()
+        }
+        
+    }
+
 }
 
 extension JapanMapCountListDetailViewController: UITableViewDataSource {
@@ -128,6 +142,9 @@ extension JapanMapCountListDetailViewController: UITableViewDataSource {
         try! realm.write {
             realm.delete(record)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            // recordCountを-1
+            updateColorState(prefectureNumber: prefecture.rawValue, isFluctuation: false)
+            
         }
     }
 }
@@ -158,6 +175,8 @@ extension JapanMapCountListDetailViewController: JapanMapCountNewRegistrationVie
                 newRecord.updateRecord(recordDate: date, recordText: text)
                 
                 realm.add(newRecord)
+                // recordCountを+1
+                updateColorState(prefectureNumber: prefecture.rawValue, isFluctuation: true)
             }
         }
     }
