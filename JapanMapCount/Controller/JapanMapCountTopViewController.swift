@@ -14,7 +14,7 @@ final class JapanMapCountTopViewController: UIViewController {
     @IBOutlet weak var assistanceMessage: UILabel!
     
     private let realm = try! Realm()
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
