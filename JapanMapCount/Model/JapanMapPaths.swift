@@ -154,6 +154,27 @@ enum Prefecture: Int, CaseIterable {
             return "沖縄"
         }
     }
+    
+    var region: Region {
+        switch self {
+        case .hokkaido:
+            return .hokkaido
+        case .aomori, .iwate, .miyagi, .akita, .yamagata, .fukushima:
+            return .tohoku
+        case .ibaraki, .tochigi, .gunma, .saitama, .chiba, .tokyo, .kanagawa:
+            return .kanto
+        case .niigata, .toyama, .ishikawa, .fukui, .yamanashi, .nagano, .gifu, .shizuoka, .aichi:
+            return .chubu
+        case .mie, .shiga, .kyoto, .osaka, .hyogo, .nara, .wakayama:
+            return .kinki
+        case .tottori, .shimane, .okayama, .hiroshima, .yamaguchi:
+            return .chugoku
+        case .tokushima, .kagawa, .ehime, .kochi:
+            return .shikoku
+        case .fukuoka, .saga, .nagasaki, .kumamoto, .oita, .miyazaki, .kagoshima, .okinawa:
+            return .kyusyu
+        }
+    }
 }
 
 enum JapanMapPaths {
@@ -1873,4 +1894,36 @@ func makeOkinawaPath() -> UIBezierPath {
     path.addLine(to: CGPoint(x: 154.27, y: 743.27))
     path.close()
     return path
+}
+
+enum Region {
+    case hokkaido
+    case tohoku
+    case kanto
+    case chubu
+    case kinki
+    case chugoku
+    case shikoku
+    case kyusyu
+    
+    var color: UIColor {
+        switch self {
+        case .hokkaido:
+            return UIColor(hex: 0x7FFFD4)
+        case .tohoku:
+            return UIColor(hex: 0x3cebfb)
+        case .kanto:
+            return UIColor(hex: 0x4bb4fb)
+        case .chubu:
+            return UIColor(hex: 0xa68ed7)
+        case .kinki:
+            return UIColor(hex: 0xfb88c2)
+        case .chugoku:
+            return UIColor(hex: 0xf5b3b3)
+        case .shikoku:
+            return UIColor(hex: 0xed8282)
+        case .kyusyu:
+            return UIColor(hex: 0xf9d9a9)
+        }
+    }
 }
