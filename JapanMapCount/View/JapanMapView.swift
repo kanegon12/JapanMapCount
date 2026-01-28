@@ -14,6 +14,7 @@ protocol JapanMapViewDelegate: AnyObject {
 @IBDesignable final class JapanMapView: UIView {
     
     weak var delegate: JapanMapViewDelegate?
+    private var visitedPrefectureNumber: Set<Int> = []
     
     private var prefecturePaths: [Prefecture: CGPath] = [:]
     
@@ -112,7 +113,7 @@ protocol JapanMapViewDelegate: AnyObject {
             // CGPathに変換
             shapeLayer.path = path.cgPath
             // 中身の色
-            shapeLayer.fillColor = UIColor.white.cgColor
+            shapeLayer.fillColor = (isVisited(prefecture) ? UIColor.systemGreen : UIColor.white).cgColor
             // 輪郭線の色
             shapeLayer.strokeColor = UIColor.black.cgColor
             // 輪郭線の太さ
@@ -126,4 +127,11 @@ protocol JapanMapViewDelegate: AnyObject {
         
     }
     
+    func setVisitedPrefecture(_ set: Set<Int>) {
+        visitedPrefectureNumber = set
+        setNeedsLayout()
+    }
+    private func isVisited(_ prefecture: Prefecture) -> Bool {
+        visitedPrefectureNumber.contains(prefecture.rawValue)
+    }
 }
