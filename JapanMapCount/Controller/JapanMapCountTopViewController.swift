@@ -11,12 +11,15 @@ import RealmSwift
 final class JapanMapCountTopViewController: UIViewController {
     
     @IBOutlet weak var mapView: JapanMapView!
-    private let realm = try! Realm()
+    @IBOutlet weak var assistanceMessage: UILabel!
     
+    private let realm = try! Realm()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         countPrefecture()
+        setMapView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,7 +32,19 @@ final class JapanMapCountTopViewController: UIViewController {
         let state = realm.objects(PrefectureColorStateModel.self)
         let visitedPrefecture = Set(state.filter{ $0.recordCount >= 1 }.map { $0.prefectureNumber })
         mapView.setVisitedPrefecture(visitedPrefecture)
+        
+        setAssistanceMessage()
     }
+    /// assistanceMessage設定
+    private func setAssistanceMessage() {
+        assistanceMessage.text = "訪れた県をタップして記録しよう！"
+        assistanceMessage.font = UIFont.boldSystemFont(ofSize: 24)
+    }
+    
+    private func setMapView() {
+        mapView.backgroundColor = UIColor(hex: 0x9cece4)
+    }
+    
 }
 
 extension JapanMapCountTopViewController: JapanMapViewDelegate {

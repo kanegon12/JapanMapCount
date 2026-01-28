@@ -113,7 +113,7 @@ protocol JapanMapViewDelegate: AnyObject {
             // CGPathに変換
             shapeLayer.path = path.cgPath
             // 中身の色
-            shapeLayer.fillColor = (isVisited(prefecture) ? UIColor.systemGreen : UIColor.white).cgColor
+            shapeLayer.fillColor = (isVisited(prefecture) ? prefecture.region.color : UIColor.white).cgColor
             // 輪郭線の色
             shapeLayer.strokeColor = UIColor.black.cgColor
             // 輪郭線の太さ
