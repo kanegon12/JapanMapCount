@@ -30,8 +30,18 @@ final class JapanMapCountTopViewController: UIViewController {
     /// １回以上訪れた県を判別
     private func countPrefecture() {
         let state = realm.objects(PrefectureColorStateModel.self)
-        let visitedPrefecture = Set(state.filter{ $0.recordCount >= 1 }.map { $0.prefectureNumber })
+        // prefectureNumber->recordCountの辞書作成
+        var counts: [Int: Int] = [:]
+        counts.reserveCapacity(state.count)
+        for states in state {
+            counts[states.prefectureNumber] = states.recordCount
+        }
+        
+        let visitedPrefecture = Set(counts.filter { $0.value >= 1 }.map { $0.key })
+        // 着色
         mapView.setVisitedPrefecture(visitedPrefecture)
+        // カウント表示
+        mapView.setPrefectureCounts(counts)
         
         setAssistanceMessage()
     }
