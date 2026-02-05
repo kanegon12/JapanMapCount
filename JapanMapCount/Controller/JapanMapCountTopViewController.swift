@@ -39,10 +39,11 @@ final class JapanMapCountTopViewController: UIViewController {
     private func setAssistanceMessage() {
         assistanceMessage.text = "訪れた県をタップして記録しよう！"
         assistanceMessage.font = UIFont.boldSystemFont(ofSize: 24)
+        assistanceMessage.textColor = .assistanceGray
     }
     
     private func setMapView() {
-        mapView.backgroundColor = UIColor(hex: 0x9cece4)
+        mapView.backgroundColor = .mapViewBackgroundBlue
     }
     
 }

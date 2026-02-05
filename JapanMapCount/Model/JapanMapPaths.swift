@@ -1909,21 +1909,21 @@ enum Region {
     var color: UIColor {
         switch self {
         case .hokkaido:
-            return UIColor(hex: 0x7FFFD4)
+            return .hokkaidoGreen
         case .tohoku:
-            return UIColor(hex: 0x3cebfb)
+            return .tohokuBlue
         case .kanto:
-            return UIColor(hex: 0x4bb4fb)
+            return .kantoBulue
         case .chubu:
-            return UIColor(hex: 0xa68ed7)
+            return .chubuPurple
         case .kinki:
-            return UIColor(hex: 0xfb88c2)
+            return .kinkiPink
         case .chugoku:
-            return UIColor(hex: 0xf5b3b3)
+            return .chugokuPink
         case .shikoku:
-            return UIColor(hex: 0xed8282)
+            return .shikokuPink
         case .kyusyu:
-            return UIColor(hex: 0xf9d9a9)
+            return .kyusyuYellow
         }
     }
 }
