@@ -18,15 +18,17 @@ final class JapanMapView: UIView {
     
     private var prefecturePaths: [Prefecture: CGPath] = [:]
     
-    private var prefectureCounts: [Int: Int] = [:]
-    private var countLabels: [Prefecture: UILabel] = [:]
+    /// 都道府県ごとの訪問回数を保持するモデル
+    private var prefectureCountModel = PrefectureCountModel()
+    /// 都道府県ごとのカウントラベルを管理するマネージャー
+    private var countLabelManager = CountLabelModel()
     
     /// 都道府県シェイプ用のコンテナ（self.layer を触らないためクラッシュを防ぐ）
     private let mapContentView: UIView = {
-        let v = UIView()
-        v.isUserInteractionEnabled = false
-        v.backgroundColor = .clear
-        return v
+        let view = UIView()
+        view.isUserInteractionEnabled = false
+        view.backgroundColor = .clear
+        return view
     }()
     
     private var isDrawing = false
@@ -145,8 +147,8 @@ final class JapanMapView: UIView {
             // 変換済みパスの保存
             prefecturePaths[prefecture] = path.cgPath
             // 回数ラベル更新
-            let countPrefecture = count(for: prefecture)
-            updateCountLabel(for: prefecture, path: path, count:countPrefecture)
+            let countPrefecture = prefectureCountModel.visitedCount(for: prefecture.rawValue)
+            countLabelManager.updateLabel(for: prefecture, count: countPrefecture, path: path, in: self)
         }
         
     }
@@ -160,83 +162,11 @@ final class JapanMapView: UIView {
     }
     
     func setPrefectureCounts(_ counts: [Int: Int]) {
-        prefectureCounts = counts
-        setNeedsLayout()
-    }
-    /// 訪問回数(何もなければ0を返す)
-    private func count(for prefecture: Prefecture) -> Int {
-        prefectureCounts[prefecture.rawValue] ?? 0
-    }
-    /// UILabel生成
-    private func updateCountLabel(for prefecture: Prefecture, path: UIBezierPath, count: Int) {
-        // ラベルを取得しなければ作成
-        let label: UILabel = {
-            // 既存
-            if let existing = countLabels[prefecture] { return existing }
-            // 新規
-            let newLabel = UILabel()
-            // 中央配置
-            newLabel.textAlignment = .center
-            // 背景不透明度
-            newLabel.backgroundColor = UIColor(white: 1.0, alpha: 0.05)
-            // 文字の色
-            newLabel.textColor = .black
-            // 枠からはみ出ない様に
-            newLabel.clipsToBounds = true
-            // 桁数が増えても円内に収まるようフォントを縮小
-            newLabel.adjustsFontSizeToFitWidth = true
-            newLabel.minimumScaleFactor = 0.3
-            // 表示
-            addSubview(newLabel)
-            // 辞書に登録
-            countLabels[prefecture] = newLabel
-            return newLabel
-        }()
-        
-        label.isHidden = false
-        label.text = "\(count)"
-        
-        let size = labelSize(for: path)
-        label.frame = CGRect(x: 0, y: 0, width: size, height: size)
-        label.layer.cornerRadius = size / 2
-        label.font = UIFont.boldSystemFont(ofSize: size * 0.55 * 1.5)
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.3
-        
-        // 都道府県の中心（またはパス内の適切な点）にラベルを配置
-        let centerInPath = labelPointInsidePath(path)
-        label.center = centerInPath
-    }
-    
-    /// 都道府県ラベルの円サイズ（全県で統一）
-    private let unifiedLabelSize: CGFloat = 18
-
-    private func labelSize(for path: UIBezierPath) -> CGFloat {
-        unifiedLabelSize
-    }
-    
-    private func labelPointInsidePath(_ path: UIBezierPath) -> CGPoint {
-        // 境界
-        let bounds = path.bounds
-        // boundsの中心を算出
-        let center = CGPoint(x: bounds.midX, y: bounds.midY)
-        // boundsの中心がpath内かチェック
-        if path.contains(center) { return center }
-        // 中心が外にある
-        // 探索の間隔指定
-        let interval: CGFloat = max(2, min(bounds.width, bounds.height) / 10)
-        // 探索の限界値
-        let maxRadius: CGFloat = max(bounds.width, bounds.height) / 2
-        
-        var radius: CGFloat = interval
-        while radius <= maxRadius {
-            for directionIndex in 0..<16 {
-                let angle = (CGFloat(directionIndex) / 16.0) * (.pi * 2)
-                let point = CGPoint(x: center.x + cos(angle) * radius, y: center.y + sin(angle) * radius)
-                if path.contains(point) { return point }
-            }
-            radius += interval
+        var model = PrefectureCountModel()
+        for (prefectureNumber, value) in counts {
+            model.setCount(value, for: prefectureNumber)
         }
-        return center
+        prefectureCountModel = model
+        setNeedsLayout()
     }
 }

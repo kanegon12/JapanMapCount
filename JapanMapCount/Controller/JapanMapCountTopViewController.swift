@@ -14,6 +14,8 @@ final class JapanMapCountTopViewController: UIViewController {
     @IBOutlet weak var assistanceMessage: UILabel!
     
     private let realm = try! Realm()
+    /// 都道府県ごとの訪問回数を管理するモデル
+    private var prefectureCountModel = PrefectureCountModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +32,14 @@ final class JapanMapCountTopViewController: UIViewController {
     /// １回以上訪れた県を判別
     private func countPrefecture() {
         let state = realm.objects(PrefectureColorStateModel.self)
-        // prefectureNumber->recordCountの辞書作成
-        var counts: [Int: Int] = [:]
-        counts.reserveCapacity(state.count)
-        for states in state {
-            counts[states.prefectureNumber] = states.recordCount
-        }
         
-        let visitedPrefecture = Set(counts.filter { $0.value >= 1 }.map { $0.key })
+        // PrefectureCountModel に集約
+        prefectureCountModel = PrefectureCountModel(results: state)
+        let visitedPrefecture = prefectureCountModel.visitedPrefectureNumbers
         // 着色
         mapView.setVisitedPrefecture(visitedPrefecture)
         // カウント表示
-        mapView.setPrefectureCounts(counts)
+        mapView.setPrefectureCounts(prefectureCountModel.counts)
         
         setAssistanceMessage()
     }
@@ -49,10 +47,11 @@ final class JapanMapCountTopViewController: UIViewController {
     private func setAssistanceMessage() {
         assistanceMessage.text = "訪れた県をタップして記録しよう！"
         assistanceMessage.font = UIFont.boldSystemFont(ofSize: 24)
+        assistanceMessage.textColor = .assistanceGray
     }
     
     private func setMapView() {
-        mapView.backgroundColor = UIColor(hex: 0x9cece4)
+        mapView.backgroundColor = .mapViewBackgroundBlue
     }
     
 }
