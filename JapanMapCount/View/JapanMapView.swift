@@ -11,12 +11,28 @@ protocol JapanMapViewDelegate: AnyObject {
     func pushListDetail(_ mapView: JapanMapView, didTap prefecture: Prefecture)
 }
 
-@IBDesignable final class JapanMapView: UIView {
+final class JapanMapView: UIView {
     
     weak var delegate: JapanMapViewDelegate?
     private var visitedPrefectureNumber: Set<Int> = []
     
     private var prefecturePaths: [Prefecture: CGPath] = [:]
+    
+    /// 都道府県ごとの訪問回数を保持するモデル
+    private var prefectureCountModel = PrefectureCountModel()
+    /// 都道府県ごとのカウントラベルを管理するマネージャー
+    private var countLabelManager = CountLabelModel()
+    
+    /// 都道府県シェイプ用のコンテナ（self.layer を触らないためクラッシュを防ぐ）
+    private let mapContentView: UIView = {
+        let view = UIView()
+        view.isUserInteractionEnabled = false
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    private var isDrawing = false
+    
     
     /// コード生成初期化
     override init(frame: CGRect) {
@@ -34,6 +50,8 @@ protocol JapanMapViewDelegate: AnyObject {
         isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         addGestureRecognizer(tap)
+        // 地図用コンテナを1つだけ追加（self.layer は使わず、この子ビューの layer のみ操作する）
+        addSubview(mapContentView)
     }
     
     override func layoutSubviews() {
@@ -74,8 +92,13 @@ protocol JapanMapViewDelegate: AnyObject {
     private func drawMap() {
         // 数値が0なら描画しない
         guard bounds.width > 0, bounds.height > 0 else { return }
-        // 一度古い都道府県の形を全部消す
-        layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        // コンテナのフレームをビューに合わせる
+        mapContentView.frame = bounds
+        let contentLayer = mapContentView.layer
+        // 古い都道府県シェイプのみ削除（自前のコンテナなのでコピーしてから削除）
+        if let sublayers = contentLayer.sublayers {
+            Array(sublayers).forEach { $0.removeFromSuperlayer() }
+        }
         // 地図全体の外枠を求める
         let original = originalMapBounds()
         // 上下左右に余白を設定
@@ -118,11 +141,14 @@ protocol JapanMapViewDelegate: AnyObject {
             shapeLayer.strokeColor = UIColor.black.cgColor
             // 輪郭線の太さ
             shapeLayer.lineWidth = 1.5
-            // レイヤーに貼る
-            layer.addSublayer(shapeLayer)
+            // コンテナレイヤーに追加
+            mapContentView.layer.addSublayer(shapeLayer)
             
             // 変換済みパスの保存
             prefecturePaths[prefecture] = path.cgPath
+            // 回数ラベル更新
+            let countPrefecture = prefectureCountModel.visitedCount(for: prefecture.rawValue)
+            countLabelManager.updateLabel(for: prefecture, count: countPrefecture, path: path, in: self)
         }
         
     }
@@ -133,5 +159,14 @@ protocol JapanMapViewDelegate: AnyObject {
     }
     private func isVisited(_ prefecture: Prefecture) -> Bool {
         visitedPrefectureNumber.contains(prefecture.rawValue)
+    }
+    
+    func setPrefectureCounts(_ counts: [Int: Int]) {
+        var model = PrefectureCountModel()
+        for (prefectureNumber, value) in counts {
+            model.setCount(value, for: prefectureNumber)
+        }
+        prefectureCountModel = model
+        setNeedsLayout()
     }
 }

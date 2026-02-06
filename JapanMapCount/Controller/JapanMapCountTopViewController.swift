@@ -14,6 +14,8 @@ final class JapanMapCountTopViewController: UIViewController {
     @IBOutlet weak var assistanceMessage: UILabel!
     
     private let realm = try! Realm()
+    /// 都道府県ごとの訪問回数を管理するモデル
+    private var prefectureCountModel = PrefectureCountModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +32,14 @@ final class JapanMapCountTopViewController: UIViewController {
     /// １回以上訪れた県を判別
     private func countPrefecture() {
         let state = realm.objects(PrefectureColorStateModel.self)
-        let visitedPrefecture = Set(state.filter{ $0.recordCount >= 1 }.map { $0.prefectureNumber })
+        
+        // PrefectureCountModel に集約
+        prefectureCountModel = PrefectureCountModel(results: state)
+        let visitedPrefecture = prefectureCountModel.visitedPrefectureNumbers
+        // 着色
         mapView.setVisitedPrefecture(visitedPrefecture)
+        // カウント表示
+        mapView.setPrefectureCounts(prefectureCountModel.counts)
         
         setAssistanceMessage()
     }
