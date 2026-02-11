@@ -14,14 +14,14 @@ protocol JapanMapViewDelegate: AnyObject {
 final class JapanMapView: UIView {
     
     weak var delegate: JapanMapViewDelegate?
-    private var visitedPrefectureNumber: Set<Int> = []
+    private var visitedPrefectureNumbers: Set<Int> = []
     
     private var prefecturePaths: [Prefecture: CGPath] = [:]
     
     /// 都道府県ごとの訪問回数を保持するモデル
     private var prefectureCountModel = PrefectureCountModel()
-    /// 都道府県ごとのカウントラベルを管理するマネージャー
-    private var countLabelManager = CountLabelModel()
+    /// 都道府県ごとのカウントラベルを管理
+    private var countLabelModel = CountLabelModel()
     
     /// 都道府県シェイプ用のコンテナ（self.layer を触らないためクラッシュを防ぐ）
     private let mapContentView: UIView = {
@@ -30,9 +30,6 @@ final class JapanMapView: UIView {
         view.backgroundColor = .clear
         return view
     }()
-    
-    private var isDrawing = false
-    
     
     /// コード生成初期化
     override init(frame: CGRect) {
@@ -148,17 +145,17 @@ final class JapanMapView: UIView {
             prefecturePaths[prefecture] = path.cgPath
             // 回数ラベル更新
             let countPrefecture = prefectureCountModel.visitedCount(for: prefecture.rawValue)
-            countLabelManager.updateLabel(for: prefecture, count: countPrefecture, path: path, in: self)
+            countLabelModel.updateView(for: prefecture, prefectureName: prefecture.shortName, count: countPrefecture, path: path, in: self)
         }
         
     }
     
     func setVisitedPrefecture(_ set: Set<Int>) {
-        visitedPrefectureNumber = set
+        visitedPrefectureNumbers = set
         setNeedsLayout()
     }
     private func isVisited(_ prefecture: Prefecture) -> Bool {
-        visitedPrefectureNumber.contains(prefecture.rawValue)
+        visitedPrefectureNumbers.contains(prefecture.rawValue)
     }
     
     func setPrefectureCounts(_ counts: [Int: Int]) {

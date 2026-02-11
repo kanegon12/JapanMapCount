@@ -154,6 +154,105 @@ enum Prefecture: Int, CaseIterable {
             return "沖縄"
         }
     }
+    // Mapに表示させる名前
+    var shortName: String {
+        switch self {
+        case .hokkaido:
+            return "北"
+        case .aomori:
+            return "青"
+        case .iwate:
+            return "岩"
+        case .miyagi:
+            return "宮"
+        case .akita:
+            return "秋"
+        case .yamagata:
+            return "山"
+        case .fukushima:
+            return "福"
+        case .ibaraki:
+            return "茨"
+        case .tochigi:
+            return "栃"
+        case .gunma:
+            return "群"
+        case .saitama:
+            return "埼"
+        case .chiba:
+            return "千"
+        case .tokyo:
+            return "東"
+        case .kanagawa:
+            return "神"
+        case .niigata:
+            return "新"
+        case .toyama:
+            return "富"
+        case .ishikawa:
+            return "石"
+        case .fukui:
+            return "福"
+        case .yamanashi:
+            return "山"
+        case .nagano:
+            return "長"
+        case .gifu:
+            return "岐"
+        case .shizuoka:
+            return "静"
+        case .aichi:
+            return "愛"
+        case .mie:
+            return "三"
+        case .shiga:
+            return "滋"
+        case .kyoto:
+            return "京"
+        case .osaka:
+            return "大"
+        case .hyogo:
+            return "兵"
+        case .nara:
+            return "奈"
+        case .wakayama:
+            return "和"
+        case .tottori:
+            return "鳥"
+        case .shimane:
+            return "島"
+        case .okayama :
+            return "岡"
+        case .hiroshima:
+            return "広"
+        case .yamaguchi:
+            return "山"
+        case .tokushima:
+            return "徳"
+        case .kagawa:
+            return "香"
+        case .ehime:
+            return "愛"
+        case .kochi:
+            return "高"
+        case .fukuoka:
+            return "福"
+        case .saga:
+            return "佐"
+        case .nagasaki:
+            return "長"
+        case .kumamoto:
+            return "熊"
+        case .oita:
+            return "大"
+        case .miyazaki:
+            return "宮"
+        case .kagoshima:
+            return "鹿"
+        case .okinawa:
+            return "沖"
+        }
+    }
     
     var region: Region {
         switch self {
