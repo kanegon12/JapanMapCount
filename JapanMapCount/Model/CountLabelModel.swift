@@ -9,21 +9,20 @@ import UIKit
 
 /// 都道府県ごとのカウントラベルを管理する構造体
 struct CountLabelModel {
-    /// 都道府県ごとのラベル辞書
-    private(set) var prefectureStackViews: [Prefecture: PrefectureCountStackView] = [:]
+    /// 都道府県ごとのラベル用ストア（配列で保持）
+    private(set) var prefectureCountStackViewStore = PrefectureCountStackViewStore()
     
     private let unifiedSize = CGSize(width: 30, height: 25)
     
     mutating func updateView(for prefecture: Prefecture, prefectureName: String, count: Int, path: UIBezierPath, in containerView: UIView) {
-        // 既存があれば再利用、なければXIBから生成して追加
-        let stackView: PrefectureCountStackView = {
-            if let existing = prefectureStackViews[prefecture] { return existing }
+        let stackView = prefectureCountStackViewStore.getOrCreate(for: prefecture) {
             let newStackView = PrefectureCountStackView.makeFromNib()
             newStackView.translatesAutoresizingMaskIntoConstraints = true
+            // タップ判定の対象から外す
+            newStackView.isUserInteractionEnabled = false
             containerView.addSubview(newStackView)
-            prefectureStackViews[prefecture] = newStackView
             return newStackView
-        }()
+        }
         // 表示内容更新
         stackView.updateLabel(prefectureName: prefectureName, count: count)
         // サイズ
