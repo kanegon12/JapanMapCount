@@ -28,9 +28,15 @@ final class PrefectureCountStackView: UIStackView {
         return stackView
     }
     
-    // 表示の更新(県名とcount)
+    /// 表示の更新(県名とcount)
     func updateLabel(prefectureName: String, count: Int) {
         prefectureNameLabel.text = prefectureName
-        countLabel.text = (count >= 100) ? "99+" : "\(count)"
+        countLabel.text = formatCount(count)
+    }
+    
+    /// カウントの表示を100以上は"99+"として表示
+    private func formatCount(_ count: Int) -> String {
+        if count >= 100 { return "99+" }
+        return "\(count)"
     }
 }
