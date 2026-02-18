@@ -15,7 +15,7 @@ final class PrefectureCountStackView: UIStackView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // 数字だけ小さくする
-        countLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 13, weight: .bold)
+        countLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 11, weight: .bold)
     }
     
     static func makeFromNib() -> PrefectureCountStackView {
@@ -28,9 +28,15 @@ final class PrefectureCountStackView: UIStackView {
         return stackView
     }
     
-    // 表示の更新(県名とcount)
+    /// 表示の更新(県名とcount)
     func updateLabel(prefectureName: String, count: Int) {
         prefectureNameLabel.text = prefectureName
-        countLabel.text = "\(count)"
+        countLabel.text = formatCount(count)
+    }
+    
+    /// カウントの表示を100以上は"99+"として表示
+    private func formatCount(_ count: Int) -> String {
+        if count >= 100 { return "99+" }
+        return "\(count)"
     }
 }
