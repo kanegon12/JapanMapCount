@@ -35,7 +35,7 @@ final class PrefectureCountStackView: UIStackView {
     }
     
     /// カウントの表示を100以上は"99+"として表示
-    private func formatCount(_ count: Int) -> String {
+    internal func formatCount(_ count: Int) -> String {
         if count >= 100 { return "99+" }
         return "\(count)"
     }

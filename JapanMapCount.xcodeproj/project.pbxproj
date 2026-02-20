@@ -7,14 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E244F007148EC73A32DFFC5 /* Pods_JapanMapCountTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC926773717AA203A239381 /* Pods_JapanMapCountTests.framework */; };
 		17B049AAF3DCE3865C2ED397 /* Pods_JapanMapCount.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C7AF26BE1AC1853996956DE /* Pods_JapanMapCount.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		52A97D052F476A8500399FEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52BF75872EFFC03900D2F961 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52BF758E2EFFC03900D2F961;
+			remoteInfo = JapanMapCount;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		3EC926773717AA203A239381 /* Pods_JapanMapCountTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JapanMapCountTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47A95F27BA7D12522A245EBD /* Pods-JapanMapCountTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JapanMapCountTests.debug.xcconfig"; path = "Target Support Files/Pods-JapanMapCountTests/Pods-JapanMapCountTests.debug.xcconfig"; sourceTree = "<group>"; };
+		52A97D012F476A8500399FEF /* JapanMapCountTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JapanMapCountTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52BF758F2EFFC03900D2F961 /* JapanMapCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JapanMapCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C7AF26BE1AC1853996956DE /* Pods_JapanMapCount.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JapanMapCount.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAEB071CF1FA6BEF30B1541A /* Pods-JapanMapCount.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JapanMapCount.debug.xcconfig"; path = "Target Support Files/Pods-JapanMapCount/Pods-JapanMapCount.debug.xcconfig"; sourceTree = "<group>"; };
 		D4A2B88899FADD648B259567 /* Pods-JapanMapCount.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JapanMapCount.release.xcconfig"; path = "Target Support Files/Pods-JapanMapCount/Pods-JapanMapCount.release.xcconfig"; sourceTree = "<group>"; };
+		D909A6FF4CD8671F6998DE6E /* Pods-JapanMapCountTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JapanMapCountTests.release.xcconfig"; path = "Target Support Files/Pods-JapanMapCountTests/Pods-JapanMapCountTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -28,6 +43,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		52A97D022F476A8500399FEF /* JapanMapCountTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = JapanMapCountTests;
+			sourceTree = "<group>";
+		};
 		52BF75E22EFFCEB600D2F961 /* JapanMapCount */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -39,6 +59,14 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		52A97CFE2F476A8500399FEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E244F007148EC73A32DFFC5 /* Pods_JapanMapCountTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52BF758C2EFFC03900D2F961 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -54,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				52BF75E22EFFCEB600D2F961 /* JapanMapCount */,
+				52A97D022F476A8500399FEF /* JapanMapCountTests */,
 				52BF75902EFFC03900D2F961 /* Products */,
 				A2C8932FF9654E97C38F96CD /* Pods */,
 				FC1639636334C7026DCF5B58 /* Frameworks */,
@@ -64,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				52BF758F2EFFC03900D2F961 /* JapanMapCount.app */,
+				52A97D012F476A8500399FEF /* JapanMapCountTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +103,8 @@
 			children = (
 				BAEB071CF1FA6BEF30B1541A /* Pods-JapanMapCount.debug.xcconfig */,
 				D4A2B88899FADD648B259567 /* Pods-JapanMapCount.release.xcconfig */,
+				47A95F27BA7D12522A245EBD /* Pods-JapanMapCountTests.debug.xcconfig */,
+				D909A6FF4CD8671F6998DE6E /* Pods-JapanMapCountTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -81,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				9C7AF26BE1AC1853996956DE /* Pods_JapanMapCount.framework */,
+				3EC926773717AA203A239381 /* Pods_JapanMapCountTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -88,6 +121,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		52A97D002F476A8500399FEF /* JapanMapCountTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52A97D072F476A8500399FEF /* Build configuration list for PBXNativeTarget "JapanMapCountTests" */;
+			buildPhases = (
+				FAE3907364D87FE33263DD76 /* [CP] Check Pods Manifest.lock */,
+				52A97CFD2F476A8500399FEF /* Sources */,
+				52A97CFE2F476A8500399FEF /* Frameworks */,
+				52A97CFF2F476A8500399FEF /* Resources */,
+				91FDD3A1F6D26F726BBBDA75 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52A97D062F476A8500399FEF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				52A97D022F476A8500399FEF /* JapanMapCountTests */,
+			);
+			name = JapanMapCountTests;
+			productName = JapanMapCountTests;
+			productReference = 52A97D012F476A8500399FEF /* JapanMapCountTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		52BF758E2EFFC03900D2F961 /* JapanMapCount */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52BF75A22EFFC03B00D2F961 /* Build configuration list for PBXNativeTarget "JapanMapCount" */;
@@ -120,6 +176,10 @@
 				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
+					52A97D002F476A8500399FEF = {
+						CreatedOnToolsVersion = 26.1;
+						TestTargetID = 52BF758E2EFFC03900D2F961;
+					};
 					52BF758E2EFFC03900D2F961 = {
 						CreatedOnToolsVersion = 26.1;
 					};
@@ -140,11 +200,19 @@
 			projectRoot = "";
 			targets = (
 				52BF758E2EFFC03900D2F961 /* JapanMapCount */,
+				52A97D002F476A8500399FEF /* JapanMapCountTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		52A97CFF2F476A8500399FEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52BF758D2EFFC03900D2F961 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +223,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		91FDD3A1F6D26F726BBBDA75 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JapanMapCountTests/Pods-JapanMapCountTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JapanMapCountTests/Pods-JapanMapCountTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JapanMapCountTests/Pods-JapanMapCountTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B40DA8645C8D3BE5232202DF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,9 +287,38 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FAE3907364D87FE33263DD76 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JapanMapCountTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		52A97CFD2F476A8500399FEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		52BF758B2EFFC03900D2F961 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,7 +328,61 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		52A97D062F476A8500399FEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52BF758E2EFFC03900D2F961 /* JapanMapCount */;
+			targetProxy = 52A97D052F476A8500399FEF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		52A97D082F476A8500399FEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47A95F27BA7D12522A245EBD /* Pods-JapanMapCountTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4U874RJDLU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.newbie.JapanMapCountTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JapanMapCount.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JapanMapCount";
+			};
+			name = Debug;
+		};
+		52A97D092F476A8500399FEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D909A6FF4CD8671F6998DE6E /* Pods-JapanMapCountTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4U874RJDLU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.newbie.JapanMapCountTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JapanMapCount.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JapanMapCount";
+			};
+			name = Release;
+		};
 		52BF75A32EFFC03B00D2F961 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BAEB071CF1FA6BEF30B1541A /* Pods-JapanMapCount.debug.xcconfig */;
@@ -319,7 +491,7 @@
 				DEVELOPMENT_TEAM = 4U874RJDLU;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -383,7 +555,7 @@
 				DEVELOPMENT_TEAM = 4U874RJDLU;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -405,6 +577,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		52A97D072F476A8500399FEF /* Build configuration list for PBXNativeTarget "JapanMapCountTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52A97D082F476A8500399FEF /* Debug */,
+				52A97D092F476A8500399FEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		52BF758A2EFFC03900D2F961 /* Build configuration list for PBXProject "JapanMapCount" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
