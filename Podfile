@@ -6,6 +6,12 @@ target 'JapanMapCount' do
   use_frameworks!
   pod 'RealmSwift'
 
+  target 'JapanMapCountTests' do
+    inherit! :search_paths
+    pod 'RealmSwift'
+  end
+
   # Pods for JapanMapCount
+
 
 end
