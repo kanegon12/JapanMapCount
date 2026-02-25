@@ -22,13 +22,14 @@ final class JapanMapCountTopViewController: UIViewController {
         mapView.delegate = self
         countPrefecture()
         setMapView()
+        setBackgroundColoring()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         countPrefecture()
     }
-    
+
     /// １回以上訪れた県を判別
     private func countPrefecture() {
         let state = realm.objects(PrefectureColorStateModel.self)
@@ -52,6 +53,10 @@ final class JapanMapCountTopViewController: UIViewController {
     
     private func setMapView() {
         mapView.backgroundColor = .mapViewBackgroundBlue
+    }
+    /// セーフエリア外も着色
+    private func setBackgroundColoring() {
+        view.backgroundColor = .mapViewBackgroundBlue
     }
     
 }
