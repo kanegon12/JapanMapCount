@@ -40,7 +40,7 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
     private let prefecture: Prefecture
     private let textMaxLength = 15
     private let editingRecordId: ObjectId?
-    private let realm = try! Realm()
+    private lazy var realm: Realm = { try! Realm() }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

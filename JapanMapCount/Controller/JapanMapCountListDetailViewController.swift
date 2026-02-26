@@ -23,7 +23,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
     }
     
     private let prefecture: Prefecture
-    private let realm = try! Realm()
+    private lazy var realm: Realm = { try! Realm() }()
     private var records: Results<RecordModel>!
     private var isAscending = false
     

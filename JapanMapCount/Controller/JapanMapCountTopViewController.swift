@@ -13,7 +13,7 @@ final class JapanMapCountTopViewController: UIViewController {
     @IBOutlet weak var mapView: JapanMapView!
     @IBOutlet weak var assistanceMessage: UILabel!
     
-    private let realm = try! Realm()
+    private lazy var realm: Realm = { try! Realm() }()
     /// 都道府県ごとの訪問回数を管理するモデル
     private var prefectureCountModel = PrefectureCountModel()
     
