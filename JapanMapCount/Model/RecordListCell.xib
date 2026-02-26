@@ -20,7 +20,7 @@
                         <rect key="frame" x="5" y="5" width="135" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="135" id="0Ea-SV-72U"/>
-                            <constraint firstAttribute="height" constant="50" id="Fyv-S3-sE8"/>
+                            <constraint firstAttribute="height" constant="50" priority="999" id="Fyv-S3-sE8"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -29,7 +29,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一言コメント" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqO-iw-FzW">
                         <rect key="frame" x="145" y="5" width="179" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="BMA-OX-NHs"/>
+                            <constraint firstAttribute="height" constant="50" priority="999" id="BMA-OX-NHs"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>

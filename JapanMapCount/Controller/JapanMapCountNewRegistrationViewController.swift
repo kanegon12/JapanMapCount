@@ -116,25 +116,31 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
         datePicker.locale = Locale(identifier: "ja_JP")
         // キーボードの代わりにPickerをだす
         dateTextField.inputView = datePicker
-        // ツールバーを作成しサイズ調整
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        // 完了ボタンを作成
-        let doneButton = UIBarButtonItem(
-            title: "完了",
-            style: .done,
-            target: self,
-            action: #selector(donePressed)
-        )
+        
+        dateTextField.inputAccessoryView = makeAccessoryToolbar(doneTitle: "完了", action: #selector(donePressed))
+    }
+    /// ツールバー作成
+    private func makeAccessoryToolbar(doneTitle: String, action: Selector) -> UIToolbar {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        toolbar.autoresizingMask = [.flexibleWidth]
         // 左にスペースを入れて右寄せに
         let flexSpace = UIBarButtonItem(
             barButtonSystemItem: .flexibleSpace,
             target: nil,
             action: nil
         )
-        toolbar.setItems([flexSpace, doneButton], animated: true)
-        // ツールバー表示
-        dateTextField.inputAccessoryView = toolbar
+        // 完了ボタンを作成
+        let doneButton = UIBarButtonItem(
+            title: doneTitle,
+            style: .done,
+            target: self,
+            action: action
+        )
+        
+        toolbar.items = [flexSpace, doneButton]
+        toolbar.sizeToFit()
+        
+        return toolbar
     }
     
     private func updataTextField(with date:Date) {
@@ -158,22 +164,8 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
         memoTextField.clipsToBounds = true
         // 文字の大きさ
         memoTextField.font = UIFont.systemFont(ofSize: 25)
-        let tools = UIToolbar()
-        tools.sizeToFit()
         
-        let spacer = UIBarButtonItem(
-            barButtonSystemItem: .flexibleSpace,
-            target: nil,
-            action: nil
-        )
-        let closeButton = UIBarButtonItem(
-            title: "完了",
-            style: .done,
-            target: self,
-            action: #selector(closeTapButton)
-        )
-        tools.items = [spacer, closeButton]
-        memoTextField.inputAccessoryView = tools
+        memoTextField.inputAccessoryView = makeAccessoryToolbar(doneTitle: "完了", action: #selector(closeTapButton))
     }
     
     @objc func closeTapButton() {
