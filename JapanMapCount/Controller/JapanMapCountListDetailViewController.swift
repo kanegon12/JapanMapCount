@@ -150,6 +150,11 @@ extension JapanMapCountListDetailViewController: UITableViewDataSource {
 }
 
 extension JapanMapCountListDetailViewController: UITableViewDelegate {
+    /// セル制約（上5 + ラベル50 + 下5 = 60）と一致させる行の高さ
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let record = records[indexPath.row]
