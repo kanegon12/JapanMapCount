@@ -26,6 +26,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
     private let realm = try! Realm()
     private var records: Results<RecordModel>!
     private var isAscending = false
+    private let recordCellHeight: CGFloat = 60
     
     
     
@@ -152,7 +153,7 @@ extension JapanMapCountListDetailViewController: UITableViewDataSource {
 extension JapanMapCountListDetailViewController: UITableViewDelegate {
     /// セル制約（上5 + ラベル50 + 下5 = 60）と一致させる行の高さ
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return recordCellHeight
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

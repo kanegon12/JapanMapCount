@@ -39,6 +39,7 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
     weak var delegate: JapanMapCountNewRegistrationViewControllerDelegate?
     private let prefecture: Prefecture
     private let textMaxLength = 15
+    private let toolbarHeight: CGFloat = 44
     private let editingRecordId: ObjectId?
     private let realm = try! Realm()
     
@@ -121,7 +122,7 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
     }
     /// ツールバー作成
     private func makeAccessoryToolbar(doneTitle: String, action: Selector) -> UIToolbar {
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: toolbarHeight))
         toolbar.autoresizingMask = [.flexibleWidth]
         // 左にスペースを入れて右寄せに
         let flexSpace = UIBarButtonItem(
