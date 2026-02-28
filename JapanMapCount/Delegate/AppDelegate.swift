@@ -6,14 +6,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // 初回スプラッシュ表示中にRealmを初期化（メインスレッドで実行）
+        _ = try? Realm()
         return true
     }
 
