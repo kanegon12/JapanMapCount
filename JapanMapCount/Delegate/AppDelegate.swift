@@ -12,10 +12,8 @@ import RealmSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // 初回起動時のRealm DB作成をバックグラウンドで先行実行し、メイン画面表示後のアクセスを軽くする
-        DispatchQueue.global(qos: .userInitiated).async {
-            _ = try? Realm()
-        }
+        // 初回スプラッシュ表示中にRealmを初期化（メインスレッドで実行）
+        _ = try? Realm()
         return true
     }
 
