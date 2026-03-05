@@ -186,9 +186,10 @@
 				};
 			};
 			buildConfigurationList = 52BF758A2EFFC03900D2F961 /* Build configuration list for PBXProject "JapanMapCount" */;
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				ja,
 				en,
 				Base,
 			);
