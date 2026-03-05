@@ -21,5 +21,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>CFBundleDisplayName</key>
+	<string>旅先記録</string>
 </dict>
 </plist>
