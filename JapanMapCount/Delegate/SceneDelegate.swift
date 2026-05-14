@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AppTrackingTransparency
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -27,8 +28,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        requestTrackingAuthorization()
+    }
+
+    /// ユーザーにトラッキング許可を求める（ATT）
+    /// iOS標準のポップアップが一度だけ表示される。許可済み・拒否済みの場合は何も起きない。
+    private func requestTrackingAuthorization() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            ATTrackingManager.requestTrackingAuthorization { _ in }
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
