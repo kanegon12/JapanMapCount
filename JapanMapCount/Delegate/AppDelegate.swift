@@ -7,13 +7,15 @@
 
 import UIKit
 import RealmSwift
+import GoogleMobileAds // Google AdMob SDKを使うために必要
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // 初回スプラッシュ表示中にRealmを初期化（メインスレッドで実行）
         _ = try? Realm()
+        // AdMob SDKをアプリ起動時に初期化する（広告を表示する前に必ず必要）
+        MobileAds.initialize()
         return true
     }
 

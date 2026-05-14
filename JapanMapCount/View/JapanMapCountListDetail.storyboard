@@ -21,6 +21,13 @@
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ban-Ad-lst">
+                                <rect key="frame" x="36.5" y="802" width="320" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Bw1-Ad-lst"/>
+                                    <constraint firstAttribute="height" constant="50" id="Bh1-Ad-lst"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzE-AK-kdh">
                                 <rect key="frame" x="338" y="729" width="40" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
@@ -43,8 +50,10 @@
                             <constraint firstItem="rDH-kY-yf0" firstAttribute="top" secondItem="Ar5-7G-500" secondAttribute="top" id="2Wi-jJ-qhF"/>
                             <constraint firstItem="Ar5-7G-500" firstAttribute="trailing" secondItem="nzE-AK-kdh" secondAttribute="trailing" constant="15" id="Cdf-LJ-mye"/>
                             <constraint firstItem="rDH-kY-yf0" firstAttribute="leading" secondItem="Ar5-7G-500" secondAttribute="leading" id="Ghi-Ac-0lK"/>
-                            <constraint firstItem="Ar5-7G-500" firstAttribute="bottom" secondItem="nzE-AK-kdh" secondAttribute="bottom" constant="15" id="Th6-yu-j4B"/>
-                            <constraint firstItem="Ar5-7G-500" firstAttribute="bottom" secondItem="rDH-kY-yf0" secondAttribute="bottom" id="oZo-dA-eDQ"/>
+                            <constraint firstItem="Ban-Ad-lst" firstAttribute="top" secondItem="nzE-AK-kdh" secondAttribute="bottom" constant="15" id="Th6-yu-j4B"/>
+                            <constraint firstItem="Ban-Ad-lst" firstAttribute="top" secondItem="rDH-kY-yf0" secondAttribute="bottom" id="oZo-dA-eDQ"/>
+                            <constraint firstItem="Ban-Ad-lst" firstAttribute="centerX" secondItem="nEF-0c-Idv" secondAttribute="centerX" id="Bx1-Ad-lst"/>
+                            <constraint firstItem="Ar5-7G-500" firstAttribute="bottom" secondItem="Ban-Ad-lst" secondAttribute="bottom" id="By1-Ad-lst"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bGK-34-aAF">
@@ -59,6 +68,7 @@
                         <outlet property="listDetailView" destination="rDH-kY-yf0" id="YgG-A4-jyX"/>
                         <outlet property="newRegistrationButton" destination="JID-8j-uIH" id="xym-SA-LS9"/>
                         <outlet property="sortOrderButton" destination="nzE-AK-kdh" id="0vH-Ad-nDX"/>
+                        <outlet property="bannerView" destination="Ban-Ad-lst" id="oBn-Ad-lst"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MA1-Rn-6Eg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -10,6 +10,8 @@ protocol JapanMapCountNewRegistrationViewControllerDelegate: AnyObject {
 
 import UIKit
 import RealmSwift
+// Google AdMob SDKを使うために必要
+import GoogleMobileAds
 
 final class JapanMapCountNewRegistrationViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -42,6 +44,8 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
     private let toolbarHeight: CGFloat = 44
     private let editingRecordId: ObjectId?
     private let realm = try! Realm()
+    // Storyboardで配置した下部バナー用のコンテナ（UIView）
+    @IBOutlet weak var bannerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +63,12 @@ final class JapanMapCountNewRegistrationViewController: UIViewController {
         memoTextField.addTarget(self, action: #selector(cutFractional(_:)), for: .editingChanged)
         
         setInitialValues()
+        setupBannerAd()
+    }
+
+    /// コンテナにBannerViewを埋め込む（配置はStoryboard、生成はUIView+BannerAdで管理）
+    private func setupBannerAd() {
+        bannerView.embedBannerAd(rootViewController: self)
     }
     init?(coder: NSCoder, delegate: JapanMapCountNewRegistrationViewControllerDelegate, prefecture: Prefecture, editingRecordId: ObjectId?) {
         self.delegate = delegate

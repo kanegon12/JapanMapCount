@@ -33,6 +33,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ban-Ad-nrg">
+                                <rect key="frame" x="36.5" y="802" width="320" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Bw1-Ad-nrg"/>
+                                    <constraint firstAttribute="height" constant="50" id="Bh1-Ad-nrg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -43,6 +50,8 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="6Jd-Tw-Lmf" secondAttribute="trailing" constant="25" id="egD-IH-9gb"/>
                             <constraint firstItem="AZK-3Z-Mek" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="rfS-sL-lfO"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="AZK-3Z-Mek" secondAttribute="trailing" id="ysG-EQ-B7j"/>
+                            <constraint firstItem="Ban-Ad-nrg" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Bx1-Ad-nrg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Ban-Ad-nrg" secondAttribute="bottom" id="By1-Ad-nrg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fR8-3A-nov">
@@ -62,29 +71,12 @@
                         <outlet property="dateTextField" destination="6Jd-Tw-Lmf" id="P47-VS-od5"/>
                         <outlet property="memoTextField" destination="AZK-3Z-Mek" id="KhA-Cc-3vv"/>
                         <outlet property="saveButton" destination="RdD-L6-PJV" id="uCx-eH-4Bw"/>
+                        <outlet property="bannerView" destination="Ban-Ad-nrg" id="oBn-Ad-nrg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-327.48091603053433" y="55.633802816901408"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="MPW-Ey-3H5">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="udo-jz-bie" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="55M-xy-8FW">
-                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="nsH-jJ-frf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jkq-Vo-ucu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1202" y="56"/>
         </scene>
     </scenes>
     <resources>
