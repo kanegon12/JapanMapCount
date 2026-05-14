@@ -7,6 +7,8 @@
 
 import UIKit
 import RealmSwift
+// Google AdMob SDKを使うために必要
+import GoogleMobileAds
 
 final class JapanMapCountListDetailViewController: UIViewController {
     @IBOutlet weak var listDetailView: UITableView!
@@ -27,6 +29,8 @@ final class JapanMapCountListDetailViewController: UIViewController {
     private var records: Results<RecordModel>!
     private var isAscending = false
     private let recordCellHeight: CGFloat = 60
+    // Storyboardで配置した下部バナー用のコンテナ（UIView）
+    @IBOutlet weak var bannerView: UIView!
     
     
     
@@ -51,6 +55,7 @@ final class JapanMapCountListDetailViewController: UIViewController {
         fetchRecords()
         // 更新
         listDetailView.reloadData()
+        setupBannerAd()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +65,11 @@ final class JapanMapCountListDetailViewController: UIViewController {
     
     
     
+    /// コンテナにBannerViewを埋め込む（配置はStoryboard、生成はUIView+BannerAdで管理）
+    private func setupBannerAd() {
+        bannerView.embedBannerAd(rootViewController: self)
+    }
+
     private func setTableView() {
         let nib = UINib(nibName: "RecordListCell", bundle: nil)
         listDetailView.register(nib, forCellReuseIdentifier: "RecordListCell")

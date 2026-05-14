@@ -7,22 +7,34 @@
 
 import UIKit
 import RealmSwift
+// Google AdMob SDKを使うために必要
+import GoogleMobileAds
 
 final class JapanMapCountTopViewController: UIViewController {
-    
+
     @IBOutlet weak var mapView: JapanMapView!
     @IBOutlet weak var assistanceMessage: UILabel!
-    
+    // Storyboardで配置した下部バナー用のコンテナ（UIView）
+    @IBOutlet weak var bottomBannerView: UIView!
+
     private let realm = try! Realm()
-    /// 都道府県ごとの訪問回数を管理するモデル
     private var prefectureCountModel = PrefectureCountModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         countPrefecture()
         setMapView()
         setBackgroundColoring()
+        setupBannerAd()
+    }
+
+    /// バナー広告を設定する
+    /// 上部：ナビゲーションバーのタイトル部分に表示
+    /// 下部：Storyboardのコンテナに埋め込む
+    private func setupBannerAd() {
+        navigationItem.titleView = BannerView.make(rootViewController: self)
+        bottomBannerView.embedBannerAd(rootViewController: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {

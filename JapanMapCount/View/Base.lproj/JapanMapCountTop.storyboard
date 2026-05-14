@@ -26,6 +26,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbn-Ad-bot">
+                                <rect key="frame" x="36.5" y="734" width="320" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Bw1-Ad-bot"/>
+                                    <constraint firstAttribute="height" constant="50" id="Bh1-Ad-bot"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -37,6 +44,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gaM-hb-1MT" secondAttribute="bottom" constant="60" id="SiW-1f-EHX"/>
                             <constraint firstItem="REs-Cp-IaA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Waz-HJ-c9w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="REs-Cp-IaA" secondAttribute="bottom" id="rDl-kd-sVw"/>
+                            <constraint firstItem="Bbn-Ad-bot" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bx1-Ad-bot"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Bbn-Ad-bot" secondAttribute="bottom" id="By1-Ad-bot"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hue-m0-izJ">
@@ -45,6 +54,7 @@
                     <connections>
                         <outlet property="assistanceMessage" destination="gaM-hb-1MT" id="qoZ-No-L6q"/>
                         <outlet property="mapView" destination="REs-Cp-IaA" id="rhF-t9-leD"/>
+                        <outlet property="bottomBannerView" destination="Bbn-Ad-bot" id="oBb-Ad-bot"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
